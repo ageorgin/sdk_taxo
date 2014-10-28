@@ -1,1 +1,1 @@
-﻿SDK de l'api Taxonomie
+SDK de l'api Taxonomie
