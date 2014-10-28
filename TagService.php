@@ -13,14 +13,10 @@ class TagService {
   protected $idClient = null;
   protected $urlAPI = null;
   protected $accessToken = null;
-  protected $expires = null;
 
   public function __construct($idClient, $urlAPI) {
-    /* $this->idClient = $idClient;
-      $this->urlAPI = $urlAPI; */
-
-    $this->idClient = '4586c1e60db11326d3b372c2ee41e48e';
-    $this->urlAPI = 'http://private-anon-79abf6322-taxonomie.apiary-mock.com';
+    $this->idClient = $idClient;
+    $this->urlAPI = $urlAPI;
   }
 
   public function getIdClient() {
@@ -54,11 +50,14 @@ class TagService {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/access_token");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+    curl_setopt($ch, CURLOPT_HEADER, TRUE);
+    curl_setopt($ch, CURLOPT_POST, TRUE);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: id: " . $this->idClient));
     $response = curl_exec($ch);
-    $this->accessToken = 'MTY0NDFhYWIwOWRhZTk0M2U1OWVkOGIzMWQwYTcyNTJhYTM4NmMyMzg2MmQxMjQ5Njc5ZTk0NGU5OTE2M2FlMg==';
-    $this->expires = '2014-11-08T07:50:26-04:00';
+    $headers = TagService::get_headers_from_curl_response($response);
+
+    $this->accessToken = $headers['X-FTVEN-ID'];
     curl_close($ch);
   }
 
@@ -67,12 +66,12 @@ class TagService {
     curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/tags/autocomplete/$string");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: id: ".$this->idClient.", expire: ".$this->expires.", token: ".$this->accessToken));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: " . $this->accessToken));
     $response = curl_exec($ch);
     curl_close($ch);
     $tags = array();
-    
-    foreach(json_decode($response) as $rep){
+
+    foreach (json_decode($response) as $rep) {
       $tmp = new Tag($rep->id);
       $tmp->setAuthor($rep->author);
       $tmp->setComment($rep->comment);
@@ -86,6 +85,28 @@ class TagService {
     }
 
     return $tags;
+  }
+
+  static function get_headers_from_curl_response($headerContent) {
+
+    $headers = array();
+    $arrRequests = explode("\r\n\r\n", $headerContent);
+
+    for ($index = 0; $index < count($arrRequests) - 1; $index++) {
+
+      foreach (explode("\r\n", $arrRequests[$index]) as $i => $line) {
+        if ($i === 0)
+          $headers[$index]['http_code'] = $line;
+        else {
+          list ($key, $value) = explode(': ', $line, 2);
+          $headers[$index][$key] = $value;
+        }
+      }
+    }
+    if (count($headers) == 1) {
+      $headers = $headers[0];
+    }
+    return $headers;
   }
 
 }
