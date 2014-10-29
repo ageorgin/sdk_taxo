@@ -47,23 +47,28 @@ class TagService {
   }
 
   public function connect() {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/access_token");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_HEADER, TRUE);
-    curl_setopt($ch, CURLOPT_POST, TRUE);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "");
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: id: " . $this->idClient));
-    $response = curl_exec($ch);
-    $headers = TagService::get_headers_from_curl_response($response);
+    if (empty($this->accessToken)) {
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/access_token");
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      curl_setopt($ch, CURLOPT_HEADER, TRUE);
+      curl_setopt($ch, CURLOPT_POST, TRUE);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, "");
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: id: " . $this->idClient));
+      $response = curl_exec($ch);
+      $headers = TagService::get_headers_from_curl_response($response);
 
-    $this->accessToken = $headers['X-FTVEN-ID'];
-    curl_close($ch);
+      $this->accessToken = $headers['X-FTVEN-ID'];
+      curl_close($ch);
+    }
   }
 
-  public function autocomplete($string = null) {
+  public function autocomplete($string = null, $sort = null, $page = null, $limit = null) {
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/tags/autocomplete/$string");
+
+    $url = $this->urlAPI . "/tags/autocomplete/$string" . TagService::addParamUrl($sort, $page, $limit);
+
+    curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: " . $this->accessToken));
@@ -107,6 +112,27 @@ class TagService {
       $headers = $headers[0];
     }
     return $headers;
+  }
+
+  static function addParamUrl($sort = null, $page = null, $limit = null) {
+    $url = '';
+    $i = 0;
+
+    if ($sort) {
+      $url += (($i == 0) ? '?' : '&') . 'sort=' . $sort;
+      $i++;
+    }
+
+    if ($page) {
+      $url += (($i == 0) ? '?' : '&') . 'page=' . $page;
+      $i++;
+    }
+
+    if ($limit) {
+      $url += (($i == 0) ? '?' : '&') . 'limit=' . $limit;
+      $i++;
+    }
+    return $url;
   }
 
 }
