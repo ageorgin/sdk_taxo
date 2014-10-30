@@ -9,13 +9,12 @@
 require_once 'Service.php';
 require_once 'Tag.php';
 
-class TagService extends Service
-{
+class TagService extends Service {
 
   public function autocomplete($string = null, $sort = null, $page = null, $limit = null) {
     $ch = curl_init();
 
-    $url = $this->urlAPI . "/tags/autocomplete/$string" . Service::addParamUrl($sort, $page, $limit);
+    $url = $this->urlAPI . "/tags/autocomplete/$string" . parent::addParamUrl($sort, $page, $limit);
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -47,19 +46,18 @@ class TagService extends Service
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_POST, TRUE);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"label\": \"" . urlencode($tag->getLabel()) . "\",\n    \"author\": \"" . urlencode($tag->getAuthor()) . "\"\n}");
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: " . $this->accessToken));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"label\": \"" . $tag->getLabel() . "\",\n    \"author\": \"" . $tag->getAuthor() . "\"\n}");
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', "X-FTVEN-ID: " . $this->accessToken));
     $response = curl_exec($ch);
     curl_close($ch);
-    var_dump("X-FTVEN-ID: " . $this->accessToken);
-    var_dump($this->urlAPI . "/tags");
-    var_dump("{\n    \"label\": \"" . $tag->getLabel() . "\",\n    \"author\": \"" . $tag->getAuthor() . "\"\n}");
-    var_dump($response);
-
+    
+    if (empty($response)) {
+      throw new Exception('Impossible de créer un tag');
+    }
     $json = json_decode($response);
-    $tag->setId($json['id']);
 
-    var_dump($json);
-    die();
+    
+    $tag->setId($json->id);
   }
+
 }

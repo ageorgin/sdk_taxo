@@ -48,7 +48,11 @@ class Service {
       curl_setopt($ch, CURLOPT_POSTFIELDS, "");
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: id: " . $this->idClient));
       $response = curl_exec($ch);
-      $headers = TagService::get_headers_from_curl_response($response);
+      $headers = Service::get_headers_from_curl_response($response);
+
+      if (empty($headers)) {
+        throw new Exception('Impossible de se connecter à l\'API Taxonomie');
+      }
 
       $this->accessToken = $headers['X-FTVEN-ID'];
       curl_close($ch);
@@ -81,17 +85,17 @@ class Service {
     $i = 0;
 
     if ($sort) {
-      $url += (($i == 0) ? '?' : '&') . 'sort=' . $sort;
+      $url .= (($i == 0) ? '?' : '&') . 'sort=' . $sort;
       $i++;
     }
 
     if ($page) {
-      $url += (($i == 0) ? '?' : '&') . 'page=' . $page;
+      $url .= (($i == 0) ? '?' : '&') . 'page=' . $page;
       $i++;
     }
 
     if ($limit) {
-      $url += (($i == 0) ? '?' : '&') . 'limit=' . $limit;
+      $url .= (($i == 0) ? '?' : '&') . 'limit=' . $limit;
       $i++;
     }
     return $url;
