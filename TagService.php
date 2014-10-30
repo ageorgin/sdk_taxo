@@ -46,16 +46,16 @@ class TagService extends Service {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_POST, TRUE);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"label\": \"" . $tag->getLabel() . "\",\n    \"author\": \"" . $tag->getAuthor() . "\"\n}");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($tag->tagToArray()));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', "X-FTVEN-ID: " . $this->accessToken));
     $response = curl_exec($ch);
     curl_close($ch);
     
-    if (empty($response)) {
-      throw new Exception('Impossible de créer un tag');
-    }
     $json = json_decode($response);
 
+    if (empty($json)) {
+      throw new Exception('Impossible de créer un tag');
+    }
     
     $tag->setId($json->id);
   }
