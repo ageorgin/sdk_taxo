@@ -34,16 +34,24 @@ class ContentService extends Service
     $json = json_decode($response);
     dpm($json, '$json create');
 
-    if (empty($json)) {
-      throw new Exception('Impossible de créer un content');
+    if (empty($json) || isset($json->error)) {
+      $message = 'Impossible de créer un content';
+
+      if (isset($json->error)) {
+        $message .= ' : ' . implode(', ', $json->error->messages);
+      }
+
+      throw new Exception($message);
     }
 
-    $content->setId($json->id);
+    if (isset($json->id)) {
+      $content->setId($json->id);
+    }
   }
 
   public function updateContent(&$content) {
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/contents/" . $content->id);
+    curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/contents/" . $content->getId());
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_PUT, TRUE);
@@ -55,8 +63,14 @@ class ContentService extends Service
     $json = json_decode($response);
     dpm($json, '$json update');
 
-    if (empty($json)) {
-      throw new Exception('Impossible de mettre à jour un content');
+    if (empty($json) || isset($json->error)) {
+      $message = 'Impossible de mettre à jour un content';
+
+      if (isset($json->error)) {
+        $message .= ' : ' . implode(', ', $json->error->messages);
+      }
+
+      throw new Exception($message);
     }
   }
 
