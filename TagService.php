@@ -4,12 +4,13 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 
 require_once 'Service.php';
 require_once 'Tag.php';
 
-class TagService extends Service{
+class TagService extends Service
+{
 
   public function autocomplete($string = null, $sort = null, $page = null, $limit = null) {
     $ch = curl_init();
@@ -39,14 +40,14 @@ class TagService extends Service{
 
     return $tags;
   }
-  
-  public function createTag(&$tag){
+
+  public function createTag(&$tag) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/tags");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_POST, TRUE);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"label\": \"" . urlencode ($tag->getLabel()) . "\",\n    \"author\": \"" . urlencode ($tag->getAuthor()) . "\"\n}");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"label\": \"" . urlencode($tag->getLabel()) . "\",\n    \"author\": \"" . urlencode($tag->getAuthor()) . "\"\n}");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: " . $this->accessToken));
     $response = curl_exec($ch);
     curl_close($ch);
@@ -57,7 +58,7 @@ class TagService extends Service{
 
     $json = json_decode($response);
     $tag->setId($json['id']);
-    
+
     var_dump($json);
     die();
   }

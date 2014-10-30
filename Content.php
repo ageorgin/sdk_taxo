@@ -1,20 +1,19 @@
 <?php
 
 /**
- * Class Tag
+ * Class Content
  */
-class Tag
+class Content
 {
 
   private $id = null;
-  private $status = null;
+  private $uri = null;
   private $type = null;
-  private $label = null;
-  private $comment = null;
+  private $tags = array();
   private $author = null;
   private $product = null;
-  private $parents = array();
-  private $preferredTag = null;
+  private $fromSynonym = false;
+  private $fromChild = false;
 
   public function __construct($id = null) {
     $this->id = $id;
@@ -43,23 +42,23 @@ class Tag
   }
 
   /**
-   * Gets the value of status.
+   * Gets the value of uri.
    *
    * @return mixed
    */
-  public function getStatus() {
-    return $this->status;
+  public function getUri() {
+    return $this->uri;
   }
 
   /**
-   * Sets the value of status.
+   * Sets the value of uri.
    *
-   * @param mixed $status the status
+   * @param mixed $uri the uri
    *
    * @return self
    */
-  public function setStatus($status) {
-    $this->status = $status;
+  public function setUri($uri) {
+    $this->uri = $uri;
 
     return $this;
   }
@@ -87,45 +86,23 @@ class Tag
   }
 
   /**
-   * Gets the value of label.
+   * Gets the value of tags.
    *
    * @return mixed
    */
-  public function getLabel() {
-    return $this->label;
+  public function getTags() {
+    return $this->tags;
   }
 
   /**
-   * Sets the value of label.
+   * Sets the value of tags.
    *
-   * @param mixed $label the label
+   * @param mixed $tags the tags
    *
    * @return self
    */
-  public function setLabel($label) {
-    $this->label = $label;
-
-    return $this;
-  }
-
-  /**
-   * Gets the value of comment.
-   *
-   * @return mixed
-   */
-  public function getComment() {
-    return $this->comment;
-  }
-
-  /**
-   * Sets the value of comment.
-   *
-   * @param mixed $comment the comment
-   *
-   * @return self
-   */
-  public function setComment($comment) {
-    $this->comment = $comment;
+  public function setTags($tags) {
+    $this->tags = $tags;
 
     return $this;
   }
@@ -175,45 +152,45 @@ class Tag
   }
 
   /**
-   * Gets the value of parents.
+   * Gets the value of fromSynonym.
    *
    * @return mixed
    */
-  public function getParents() {
-    return $this->parents;
+  public function getFromSynonym() {
+    return $this->fromSynonym;
   }
 
   /**
-   * Sets the value of parents.
+   * Sets the value of fromSynonym.
    *
-   * @param mixed $parents the parents
+   * @param mixed $fromSynonym the from synonym
    *
    * @return self
    */
-  public function setParents($parents) {
-    $this->parents = $parents;
+  public function setFromSynonym($fromSynonym) {
+    $this->fromSynonym = $fromSynonym;
 
     return $this;
   }
 
   /**
-   * Gets the value of preferredTag.
+   * Gets the value of fromChild.
    *
    * @return mixed
    */
-  public function getPreferredTag() {
-    return $this->preferredTag;
+  public function getFromChild() {
+    return $this->fromChild;
   }
 
   /**
-   * Sets the value of preferredTag.
+   * Sets the value of fromChild.
    *
-   * @param mixed $preferredTag the preferred tag
+   * @param mixed $fromChild the from child
    *
    * @return self
    */
-  public function setPreferredTag($preferredTag) {
-    $this->preferredTag = $preferredTag;
+  public function setFromChild($fromChild) {
+    $this->fromChild = $fromChild;
 
     return $this;
   }
