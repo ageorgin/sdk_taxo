@@ -217,7 +217,7 @@ class Tag
 
     return $this;
   }
-  
+
   public function tagToArray(){
     return array(
       "label" => $this->label,

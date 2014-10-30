@@ -194,4 +194,13 @@ class Content
 
     return $this;
   }
+
+  public function contentToArray(){
+    return array(
+      "uri" => $this->uri,
+      "type" => $this->type,
+      "tags" => $this->tags,
+      "author" => $this->author,
+      );
+  }
 }

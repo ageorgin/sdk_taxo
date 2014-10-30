@@ -50,13 +50,13 @@ class TagService extends Service {
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', "X-FTVEN-ID: " . $this->accessToken));
     $response = curl_exec($ch);
     curl_close($ch);
-    
+
     $json = json_decode($response);
 
     if (empty($json)) {
       throw new Exception('Impossible de créer un tag');
     }
-    
+
     $tag->setId($json->id);
   }
 
