@@ -59,9 +59,13 @@ class Service {
     }
   }
 
-  static function get_headers_from_curl_response($headerContent) {
+  /**
+   * Retourne les headers d'une réponse et strip les réponses
+   */
+  static function get_headers_from_curl_response(&$response) {
     $headers = array();
-    $arrRequests = explode("\r\n\r\n", $headerContent);
+    $arrRequests = explode("\r\n\r\n", $response);
+    $response = $arrRequests[1];
 
     for ($index = 0; $index < count($arrRequests) - 1; $index++) {
 
