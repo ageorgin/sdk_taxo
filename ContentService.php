@@ -2,6 +2,7 @@
 
 require_once 'Service.php';
 require_once 'Content.php';
+require_once 'Page.php';
 
 class ContentService extends Service
 {
@@ -24,7 +25,35 @@ class ContentService extends Service
   }
 
   public function getContentByTags($tags, $synonyms = false, $children = false, $page = 1, $limit = 100) {
-    // TODO GET /contents/?tags={tags}&synonyms={synonyms}&children={children}&page={page}&limit={limit}
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/contents/?tags=" . implode($tags, ',') . "&synonyms=$synonyms&children=$children&page=$page&limit=$limit");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', "X-FTVEN-ID: " . $this->accessToken));
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $json = json_decode($response);
+    $contents = array();
+    foreach ($json as $content) {
+      $tmp = new Content($content->id);
+      $tmp->setAuthor($content->author);
+      $tmp->setUri($content->uri);
+      $tmp->setType($content->type);
+      $tmp->setProduct($content->product);
+      $tmp->setTags($content->tags);
+      $tmp->setFromSynonym($synonyms);
+      $tmp->setFromChild($children);
+      $contents[] = $tmp;
+    }
+    return $contents;
+  }
+
+  public function loadPage($content) {
+    $page = new Page();
+    $response = file_get_contents($content->getUri());
+    dpm($response);
+    return $page;
   }
 
   public function createContent(&$content) {
