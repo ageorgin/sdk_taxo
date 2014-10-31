@@ -48,7 +48,7 @@ class ContentService extends Service
     $json = json_decode($response);
     curl_close($ch);
 
-    $error_message = 'Impossible de créer un content dans l\'API taxonomie';
+    $error_message = 'Impossible de créer un contenu dans le thésaurus taxonomie';
     if (empty($headers)) {
       throw new Exception($error_message . ' : l\'API ne réponds pas');
     }
@@ -77,7 +77,7 @@ class ContentService extends Service
     $json = json_decode($response);
     curl_close($ch);
 
-    $error_message = 'Impossible de mettre à jour un content dans l\'API taxonomie';
+    $error_message = 'Impossible de mettre à jour un contenu le thésaurus taxonomie';
     if (empty($headers)) {
       throw new Exception($error_message . ' : l\'API ne réponds pas');
     }
@@ -101,7 +101,7 @@ class ContentService extends Service
     $json = json_decode($response);
     curl_close($ch);
 
-    $error_message = 'Impossible de supprimer un content dans l\'API taxonomie';
+    $error_message = 'Impossible de supprimer un contenu dans le thésaurus taxonomie';
     if (empty($headers)) {
       throw new Exception($error_message . ' : l\'API ne réponds pas');
     }
