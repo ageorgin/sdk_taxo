@@ -8,20 +8,7 @@ class ContentService extends Service
 {
 
   public function getContent($id) {
-    $ch = curl_init();
-    $url =$this->urlAPI . "/contents/" . $id;
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_HEADER, TRUE);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', "X-FTVEN-ID: " . $this->accessToken));
-    $response = curl_exec($ch);
-    $headers = Service::get_headers_from_curl_response($response);
-    $json = json_decode($response);
-    curl_close($ch);
-
-    if (isset($json->id)) {
-      return new Content($json->id);
-    }
+    // TODO GET /contents/$id
   }
 
   public function getContentByTags($tags, $synonyms = false, $children = false, $page = 1, $limit = 100) {
