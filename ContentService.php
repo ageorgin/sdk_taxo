@@ -2,7 +2,6 @@
 
 require_once 'Service.php';
 require_once 'Content.php';
-require_once 'Page.php';
 
 class ContentService extends Service
 {
@@ -34,13 +33,6 @@ class ContentService extends Service
       $contents[] = $tmp;
     }
     return $contents;
-  }
-
-  public function loadPage($content) {
-    $page = new Page();
-    $response = file_get_contents($content->getUri());
-    dpm($response);
-    return $page;
   }
 
   public function createContent(&$content) {
@@ -119,5 +111,10 @@ class ContentService extends Service
     elseif (isset($json->error)) {
       throw new Exception($error_message .= ' : ' . implode(', ', $json->error->messages));
     }
+  }
+
+  public function loadPage($content) {
+    $response = file_get_contents($content->getUri());
+    return json_decode($response);
   }
 }
