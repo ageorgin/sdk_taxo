@@ -14,7 +14,12 @@ class TagService extends Service {
   public function autocomplete($string = null, $sort = null, $page = null, $limit = null) {
     $ch = curl_init();
 
-    $url = $this->urlAPI . "/tags/autocomplete/$string" . parent::addParamUrl($sort, $page, $limit);
+    $params = array(
+      'sort' => $sort,
+      'page' => $page,
+      'limit' => $limit
+    );
+    $url = $this->urlAPI . "/tags/autocomplete/" . rawurlencode($string) . parent::addParamUrl($params);
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);

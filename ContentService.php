@@ -12,7 +12,6 @@ class ContentService extends Service
 
   public function getContentByTags($tags, $synonyms = false, $children = false, $page = 1, $limit = 100) {
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/contents/?tags=" . implode($tags, ',') . "&synonyms=$synonyms&children=$children&page=$page&limit=$limit");
 
     $params = array(
       'tags' => implode($tags, ','),

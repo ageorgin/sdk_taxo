@@ -84,24 +84,17 @@ class Service {
     return $headers;
   }
 
-  static function addParamUrl($sort = null, $page = null, $limit = null) {
+  static function addParamUrl($params = array()) {
     $url = '';
     $i = 0;
 
-    if ($sort) {
-      $url .= (($i == 0) ? '?' : '&') . 'sort=' . $sort;
-      $i++;
+    foreach ($params as $key => $value) {
+      if ($value) {
+        $url .= (($i == 0) ? '?' : '&') . $key . '=' . rawurlencode($value);
+        $i++;
+      }
     }
 
-    if ($page) {
-      $url .= (($i == 0) ? '?' : '&') . 'page=' . $page;
-      $i++;
-    }
-
-    if ($limit) {
-      $url .= (($i == 0) ? '?' : '&') . 'limit=' . $limit;
-      $i++;
-    }
     return $url;
   }
 
