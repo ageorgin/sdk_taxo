@@ -124,7 +124,11 @@ class ContentService extends Service
   }
 
   public function loadPage($content) {
-    $response = file_get_contents($content->getUri());
+    try {
+      $response = @file_get_contents($content->getUri());
+    } catch (Exception $e) {
+      throw new Exception('Impossible de lire le contenu : ' . $e->getMessage());
+    }
     return json_decode($response);
   }
 }
