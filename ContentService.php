@@ -87,7 +87,7 @@ class ContentService extends Service
     $json = json_decode($response);
     curl_close($ch);
 
-    $error_message = 'Impossible de mettre à jour un contenu le thésaurus taxonomie';
+    $error_message = 'Impossible de mettre à jour un contenu dans le thésaurus taxonomie';
     if (empty($headers)) {
       throw new Exception($error_message . ' : l\'API ne réponds pas');
     }
