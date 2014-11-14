@@ -1,5 +1,17 @@
- {
-   "require": {
-      "guzzlehttp/guzzle": "~5.0"
-   }
+{
+    "name": "ftven/sdk-taxonomie",
+    "description": "Client API FTVEN projet taxonomie",
+    "keywords": ["api", "rest"],
+    "type": "library",
+    "licence": "proprietary",
+    "authors": [{
+        "name": "France Télévisions Edition Numérique"
+    }],
+    "require": {
+        "php": ">=5.3.0",
+        "guzzlehttp/guzzle": "~5.0"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
 }
