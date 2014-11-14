@@ -11,6 +11,7 @@ class Service {
   public function __construct($idClient, $urlAPI) {
     $this->idClient = $idClient;
     $this->urlAPI = $urlAPI;
+    $this->connect();
   }
 
   public function getIdClient() {
@@ -42,73 +43,23 @@ class Service {
 
   public function connect() {
     if (empty($this->accessToken)) {
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $this->urlAPI . "/access_token");
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-      curl_setopt($ch, CURLOPT_HEADER, TRUE);
-      curl_setopt($ch, CURLOPT_POST, TRUE);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "");
-      curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-FTVEN-ID: id: " . $this->idClient));
-      $response = curl_exec($ch);
-      $headers = Service::get_headers_from_curl_response($response);
+      $headers = array(
+        'X-FTVEN-ID' => "id: " . $this->idClient,
+      );
 
-      if (empty($headers)) {
-        throw new Exception('Impossible de se connecter à l\'API Taxonomie');
-      }
+      $response = $this->sendPostRequest($this->urlAPI . "/access_token", array(), $headers);
 
-      $this->accessToken = $headers['X-FTVEN-ID'];
-      curl_close($ch);
+      $x_ftven_id = $response->getHeader('X-FTVEN-ID')->raw();
+
+      $this->accessToken = $x_ftven_id[0];
     }
-  }
-
-  /**
-   * Retourne les headers d'une réponse et strip les réponses
-   */
-  static function get_headers_from_curl_response(&$response) {
-    $headers = array();
-    $arrRequests = explode("\r\n\r\n", $response);
-    $response = $arrRequests[1];
-
-    for ($index = 0; $index < count($arrRequests) - 1; $index++) {
-
-      foreach (explode("\r\n", $arrRequests[$index]) as $i => $line) {
-        if ($i === 0)
-          $headers[$index]['http_code'] = $line;
-        else {
-          list ($key, $value) = explode(': ', $line, 2);
-          $headers[$index][$key] = $value;
-        }
-      }
-    }
-    if (count($headers) == 1) {
-      $headers = $headers[0];
-    }
-    return $headers;
-  }
-
-  static function addParamUrl($params = array()) {
-    $url = '';
-    $i = 0;
-
-    foreach ($params as $key => $value) {
-      if ($value) {
-        $url .= (($i == 0) ? '?' : '&') . $key . '=' . rawurlencode($value);
-        $i++;
-      }
-    }
-
-    return $url;
   }
 
   protected function sendGetRequest($url, $param = array()) {
     $client = new Guzzle\Service\Client();
-    $header = array(
-      'X-FTVEN-ID' => $this->accessToken,
-      'Content-Type' => 'application/json',
-    );
 
-    $request = $client->get($url, $header);
-    foreach ($param as $key => $value){
+    $request = $client->get($url, $this->getHeaders());
+    foreach ($param as $key => $value) {
       $request->getQuery()->add($key, $value);
     }
 
@@ -117,17 +68,43 @@ class Service {
     return $response;
   }
 
-  protected function sendPostRequest($url, $body = array()) {
+  protected function sendPostRequest($url, $body = array(), $headers = null) {
     $client = new Guzzle\Service\Client();
-    $header = array(
-      'X-FTVEN-ID' => $this->accessToken,
-      'Content-Type' => 'application/json',
-    );
+
+    $header = $this->getHeaders();
+    if ($headers) {
+      $header = $headers;
+    }
 
     $request = $client->post($url, $header, $body);
     $response = $request->send();
 
     return $response;
+  }
+
+  protected function sendPutRequest($url, $body = array()) {
+    $client = new Guzzle\Service\Client();
+
+    $request = $client->put($url, $this->getHeaders(), $body);
+    $response = $request->send();
+
+    return $response;
+  }
+
+  protected function sendDeleteRequest($url, $body = array()) {
+    $client = new Guzzle\Service\Client();
+
+    $request = $client->put($url, $this->getHeaders(), $body);
+    $response = $request->send();
+
+    return $response;
+  }
+
+  private function getHeaders() {
+    return array(
+      'X-FTVEN-ID' => $this->accessToken,
+      'Content-Type' => 'application/json',
+    );
   }
 
 }

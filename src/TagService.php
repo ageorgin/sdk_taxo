@@ -37,7 +37,6 @@ class TagService extends Service {
   }
 
   public function createTag(&$tag) {
-
     $response = parent::sendPostRequest($this->urlAPI . "/tags", $tag->tagToArray());
     $responseBody = $response->json();
 
