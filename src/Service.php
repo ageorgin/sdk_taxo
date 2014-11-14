@@ -1,6 +1,6 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 class Service {
 
@@ -98,6 +98,36 @@ class Service {
     }
 
     return $url;
+  }
+
+  protected function sendGetRequest($url, $param = array()) {
+    $client = new Guzzle\Service\Client();
+    $header = array(
+      'X-FTVEN-ID' => $this->accessToken,
+      'Content-Type' => 'application/json',
+    );
+
+    $request = $client->get($url, $header);
+    foreach ($param as $key => $value){
+      $request->getQuery()->add($key, $value);
+    }
+
+    $response = $request->send();
+
+    return $response;
+  }
+
+  protected function sendPostRequest($url, $body = array()) {
+    $client = new Guzzle\Service\Client();
+    $header = array(
+      'X-FTVEN-ID' => $this->accessToken,
+      'Content-Type' => 'application/json',
+    );
+
+    $request = $client->post($url, $header, $body);
+    $response = $request->send();
+
+    return $response;
   }
 
 }
