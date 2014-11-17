@@ -34,10 +34,10 @@ class GuzzleService implements GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function post($uri = null, array $data = [], array $headers = [])
+    public function post($uri = null, array $data = null, array $headers = [])
     {
-        $options = ['json' => $data, 'headers' => $headers];
-        $result = $this->client->post($this->getUrl() . $uri, $options);
+        $request = $this->client->post($this->getUrl() . $uri, $headers, $data);
+        $result = $request->send();
 
         return $result;
     }

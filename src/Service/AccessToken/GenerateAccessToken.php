@@ -17,7 +17,7 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
 
     public function execute(AccessToken $accessToken)
     {
-        $response = $this->getGuzzleService()->post(self::URI, [], ['X-FTVEN-ID' => "id: " . $accessToken->getId()]);
+        $response = $this->getGuzzleService()->post(self::URI, null, ['X-FTVEN-ID' => "id: " . $accessToken->getId()]);
 
         $headerAT = $response->getHeader('X-FTVEN-ID');
 
