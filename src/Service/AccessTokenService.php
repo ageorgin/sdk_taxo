@@ -20,16 +20,10 @@ class AccessTokenService implements AccessTokenServiceInterface
 
     public function checkAccessToken()
     {
-        $accessTokenValid = true;
+        $now = new \DateTime();
 
-        if (null === $this->accessToken) {
-            $this->accessToken = new AccessToken();
-            //todo ligne suivante à supprimer
-            $this->accessToken->setId('info');
-            $accessTokenValid = false;
-        }
-
-        if (!$accessTokenValid) {
+        // le token n'existe pas ou a expiré
+        if ( null === $this->getAccessToken()->getToken() ||  $this->getAccessToken()->getExpire()->getTimestamp() < $now->getTimestamp()) {
             $this->generateAccessToken();
         }
     }
@@ -41,7 +35,7 @@ class AccessTokenService implements AccessTokenServiceInterface
 
     protected function generateAccessToken()
     {
-        $this->accessToken = $this->getGenerateService()->execute($this->accessToken);
+        $this->accessToken = $this->getGenerateService()->execute($this->getAccessToken());
     }
 
     /**
@@ -61,5 +55,26 @@ class AccessTokenService implements AccessTokenServiceInterface
             $this->generateService = new GenerateAccessToken();
         }
         return $this->generateService;
+    }
+
+    /**
+     * @param \AccessToken $accessToken
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+    }
+
+    /**
+     * @return \AccessToken
+     */
+    public function getAccessToken()
+    {
+        if (null === $this->accessToken) {
+            $this->accessToken = new AccessToken();
+            //todo ligne suivante à supprimer
+            $this->accessToken->setId('info');
+        }
+        return $this->accessToken;
     }
 } 
