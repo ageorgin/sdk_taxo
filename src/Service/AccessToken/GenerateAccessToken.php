@@ -15,12 +15,23 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
      */
     private $guzzleService = null;
 
+    /**
+     * @var ParserAccessTokenInterface
+     */
+    private $parserService = null;
+
     public function execute(AccessToken $accessToken)
     {
         $response = $this->getGuzzleService()->post(self::URI, null, ['X-FTVEN-ID' => "id: " . $accessToken->getId()]);
 
-        $headerAT = $response->getHeader('X-FTVEN-ID');
+        $headerAT = $response->getHeader('X-FTVEN-ID')->toArray();
+        $headerAT = $this->getParserService()->parseXFtvenId($headerAT[0]);
 
+        $accessToken->setId($headerAT['id']);
+        $accessToken->setExpire(new \DateTime($headerAT['expire']));
+        $accessToken->setToken($headerAT['token']);
+
+        return $accessToken;
     }
 
     /**
@@ -40,5 +51,24 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
             $this->guzzleService = new GuzzleService();
         }
         return $this->guzzleService;
+    }
+
+    /**
+     * @param \ParserAccessTokenInterface $parserService
+     */
+    public function setParserService($parserService)
+    {
+        $this->parserService = $parserService;
+    }
+
+    /**
+     * @return \ParserAccessTokenInterface
+     */
+    public function getParserService()
+    {
+        if (null == $this->parserService) {
+            $this->parserService = new ParserAccessToken();
+        }
+        return $this->parserService;
     }
 } 

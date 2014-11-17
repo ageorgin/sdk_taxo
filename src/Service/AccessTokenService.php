@@ -25,7 +25,7 @@ class AccessTokenService implements AccessTokenServiceInterface
         if (null === $this->accessToken) {
             $this->accessToken = new AccessToken();
             //todo ligne suivante à supprimer
-            $this->accessToken->getId('info');
+            $this->accessToken->setId('info');
             $accessTokenValid = false;
         }
 
