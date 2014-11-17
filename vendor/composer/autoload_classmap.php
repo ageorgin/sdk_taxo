@@ -6,4 +6,18 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AccessToken' => $baseDir . '/src/Entity/AccessToken.php',
+    'AccessTokenService' => $baseDir . '/src/Service/AccessTokenService.php',
+    'AccessTokenServiceInterface' => $baseDir . '/src/Service/AccessTokenServiceInterface.php',
+    'Content' => $baseDir . '/src/Entity/Content.php',
+    'ContentService' => $baseDir . '/src/ContentService.php',
+    'ContentServiceInterface' => $baseDir . '/src/Service/ContentServiceInterface.php',
+    'GenerateAccessToken' => $baseDir . '/src/Service/AccessToken/GenerateAccessToken.php',
+    'GenerateAccessTokenInterface' => $baseDir . '/src/Service/AccessToken/GenerateAccessTokenInterface.php',
+    'GuzzleService' => $baseDir . '/src/Service/GuzzleService.php',
+    'GuzzleServiceInterface' => $baseDir . '/src/Service/GuzzleServiceInterface.php',
+    'Service' => $baseDir . '/src/Service.php',
+    'Tag' => $baseDir . '/src/Entity/Tag.php',
+    'TagService' => $baseDir . '/src/TagService.php',
+    'TagServiceInterface' => $baseDir . '/src/Service/TagServiceInterface.php',
 );

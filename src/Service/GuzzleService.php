@@ -15,10 +15,10 @@ class GuzzleService implements GuzzleServiceInterface
 
     private $url;
 
-    public function __construct($url = null, \GuzzleHttp\ClientInterface $client = null)
+    public function __construct($url = null, Guzzle\Http\ClientInterface $client = null)
     {
         if (null === $client) {
-            $client = new \GuzzleHttp\Client();
+            $client = new Guzzle\Http\Client();
         }
         $this->client = $client;
 
