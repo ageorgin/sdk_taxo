@@ -23,6 +23,7 @@ class AccessTokenService implements AccessTokenServiceInterface
         $accessTokenValid = true;
 
         if (null === $this->accessToken) {
+            $this->accessToken = new AccessToken();
             $accessTokenValid = false;
         }
 
