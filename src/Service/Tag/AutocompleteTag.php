@@ -25,12 +25,9 @@ class AutocompleteTag implements AutocompleteTagInterface
      */
     private $mapperSvc = null;
 
-    public function execute($filter, $page, $limit, $sort = null)
+    public function execute($filter, $sort = null)
     {
-        $params = [
-            'page' => $page,
-            'limit' => $limit
-        ];
+        $params = [];
         if (null !== $sort) {
             $params['sort'] = $sort;
         }
@@ -53,7 +50,7 @@ class AutocompleteTag implements AutocompleteTagInterface
     public function getAccessTokenSvc()
     {
         if (null === $this->accessTokenSvc) {
-            $this->accessTokenSvc = new AccessToken();
+            $this->accessTokenSvc = new AccessTokenService();
         }
 
         return $this->accessTokenSvc;

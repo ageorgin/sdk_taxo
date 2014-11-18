@@ -31,7 +31,7 @@ class AccessTokenService implements AccessTokenServiceInterface
     public function getHeaders()
     {
         $this->checkAccessToken();
-        return ['X-FTVEN-ID' => 'id: ' . $this->getAccessToken()->getId() . ', expire: ' . $this->getAccessToken()->getExpire()->format('c') . ', token: ' . $this->getAccessToken()->getToken()];
+        return ['X-FTVEN-ID' => 'id: ' . $this->getAccessToken()->getId() . ', expire: ' . $this->getAccessToken()->getExpire()->format('Y-m-d\TH:i:sO') . ', token: ' . $this->getAccessToken()->getToken()];
     }
 
     protected function generateAccessToken()
@@ -74,7 +74,7 @@ class AccessTokenService implements AccessTokenServiceInterface
         if (null === $this->accessToken) {
             $this->accessToken = new AccessToken();
             //todo ligne suivante à supprimer
-            $this->accessToken->setId('info');
+            $this->accessToken->setId('pluzz');
         }
         return $this->accessToken;
     }

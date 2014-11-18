@@ -9,5 +9,5 @@
 
 interface AutocompleteTagInterface
 {
-    public function execute($filter, $page, $limit, $sort = null);
+    public function execute($filter, $sort = null);
 } 

@@ -11,11 +11,9 @@ interface TagServiceInterface
     /**
      * @param null $string
      * @param null $sort
-     * @param int $page
-     * @param int $limit
      * @return mixed
      */
-    public function autocomplete($string = null, $sort = null, $page = 1, $limit = 1000);
+    public function autocomplete($string = null, $sort = null);
 
     /**
      * @param Tag $tag

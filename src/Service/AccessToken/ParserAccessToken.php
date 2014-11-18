@@ -16,8 +16,6 @@ class ParserAccessToken implements ParserAccessTokenInterface
     public function parseXFtvenId($xFtvenId)
     {
         if (preg_match('/^id: (.*), expire: (.*), token: (.*)/', $xFtvenId, $matches)) {
-            var_dump($matches);
-
             return [
                 'id' => $matches[1],
                 'expire' => $matches[2],

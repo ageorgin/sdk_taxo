@@ -16,11 +16,9 @@ class TagService implements TagServiceInterface
     /**
      * @param null $string
      * @param null $sort
-     * @param int $page
-     * @param int $limit
      * @return mixed
      */
-    public function autocomplete($string = null, $sort = null, $page = 1, $limit = 100)
+    public function autocomplete($string = null, $sort = null)
     {
         return $this->getAutocompleteSvc()->execute($string, $page, $limit, $sort);
     }
