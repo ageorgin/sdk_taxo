@@ -25,6 +25,11 @@ class CreateTag implements CreateTagInterface
      */
     private $accessTokenSvc = null;
 
+    /**
+     * @var MapperTagInterface
+     */
+    private $mapperSvc = null;
+
     public function execute(Tag $tag)
     {
         $response = $this->getGuzzleSvc()->post(
@@ -37,7 +42,7 @@ class CreateTag implements CreateTagInterface
         );
 
         $response = $response->json();
-        $tag->setId($response['id']);
+        $this->getMapperSvc()->populateTag($tag, $response);
     }
 
     /**
@@ -96,5 +101,24 @@ class CreateTag implements CreateTagInterface
         }
 
         return $this->accessTokenSvc;
+    }
+
+    /**
+     * @param \MapperTagInterface $mapperSvc
+     */
+    public function setMapperSvc($mapperSvc)
+    {
+        $this->mapperSvc = $mapperSvc;
+    }
+
+    /**
+     * @return \MapperTagInterface
+     */
+    public function getMapperSvc()
+    {
+        if (null === $this->mapperSvc) {
+            $this->mapperSvc = new MapperTag();
+        }
+        return $this->mapperSvc;
     }
 } 

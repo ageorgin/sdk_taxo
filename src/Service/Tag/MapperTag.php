@@ -12,19 +12,27 @@ class MapperTag implements MapperTagInterface
     {
         $tags = [];
         foreach($data as $d) {
-            $tmp = new Tag($d['id']);
-            $tmp->setAuthor($d['author']);
-            $tmp->setComment($d['comment']);
-            $tmp->setLabel($d['label']);
-            $tmp->setParents($d['parent_tags']);
-            $tmp->setPreferredTag($d['preferred_tag']);
-            $tmp->setProduct($d['product']);
-            $tmp->setStatus($d['status']);
-            $tmp->setType($d['type']);
+            $tmp = new Tag();
+            $this->populateTag($tmp, $d);
             $tags[] = $tmp;
             unset($tmp);
         }
 
         return $tags;
     }
+
+    public function populateTag(Tag $tag, $data)
+    {
+        $tag->setId($data['id']);
+        $tag->setAuthor($data['author']);
+        $tag->setComment($data['comment']);
+        $tag->setLabel($data['label']);
+        $tag->setParents($data['parent_tags']);
+        $tag->setPreferredTag($data['preferred_tag']);
+        $tag->setProduct($data['product']);
+        $tag->setStatus($data['status']);
+        $tag->setType($data['type']);
+    }
+
+
 } 
