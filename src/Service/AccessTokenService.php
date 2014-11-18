@@ -30,7 +30,7 @@ class AccessTokenService implements AccessTokenServiceInterface
 
     public function getHeaders()
     {
-        // TODO: Implement getHeaders() method.
+        return ['X-FTVEN-ID' => 'id: ' . $this->getAccessToken()->getId() . ', expire: ' . $this->getAccessToken()->getExpire()->format('c') . ', token: ' . $this->getAccessToken()->getToken()];
     }
 
     protected function generateAccessToken()
