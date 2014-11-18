@@ -20,7 +20,7 @@ class TagService implements TagServiceInterface
      */
     public function autocomplete($string = null, $sort = null)
     {
-        return $this->getAutocompleteSvc()->execute($string, $page, $limit, $sort);
+        return $this->getAutocompleteSvc()->execute($string, $sort);
     }
 
     /**
