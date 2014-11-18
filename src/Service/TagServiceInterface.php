@@ -19,5 +19,5 @@ interface TagServiceInterface
      * @param Tag $tag
      * @return mixed
      */
-    public function createTag(Tag &$tag);
+    public function createTag(Tag $tag);
 } 

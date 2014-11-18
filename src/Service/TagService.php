@@ -14,6 +14,11 @@ class TagService implements TagServiceInterface
     private $autocompleteSvc = null;
 
     /**
+     * @var CreateTagInterface
+     */
+    private $createSvc = null;
+
+    /**
      * @param null $string
      * @param null $sort
      * @return mixed
@@ -27,9 +32,9 @@ class TagService implements TagServiceInterface
      * @param Tag $tag
      * @return mixed
      */
-    public function createTag(Tag &$tag)
+    public function createTag(Tag $tag)
     {
-        // TODO: Implement createTag() method.
+        return $this->getCreateSvc()->execute($tag);
     }
 
     /**
@@ -49,5 +54,24 @@ class TagService implements TagServiceInterface
             $this->autocompleteSvc = new AutocompleteTag();
         }
         return $this->autocompleteSvc;
+    }
+
+    /**
+     * @param \CreateTagInterface $createSvc
+     */
+    public function setCreateSvc($createSvc)
+    {
+        $this->createSvc = $createSvc;
+    }
+
+    /**
+     * @return \CreateTagInterface
+     */
+    public function getCreateSvc()
+    {
+        if (null === $this->createSvc) {
+            $this->createSvc = new CreateTag();
+        }
+        return $this->createSvc;
     }
 } 
