@@ -27,7 +27,7 @@ interface GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function get($url = null);
+    public function get($uri = null, $headers = [], $params = []);
 
     /**
      * Send a DELETE request

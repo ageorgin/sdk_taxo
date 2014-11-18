@@ -50,11 +50,15 @@ class GuzzleService implements GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function get($uri = null)
+    public function get($uri = null, $headers = [], $params = [])
     {
-        $result = $this->client->get($this->getUrl() . $uri);
+        $request = $this->client->get($this->getUrl() . $uri, $headers);
+        foreach ($params as $key => $value) {
+            $request->getQuery()->add($key, $value);
+        }
+        $result = $request->send();
 
-        return $result;
+        return $result->json();
     }
 
     /**
