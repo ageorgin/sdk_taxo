@@ -41,6 +41,7 @@ return array(
     'Tag' => $baseDir . '/src/Entity/Tag.php',
     'TagService' => $baseDir . '/src/Service/TagService.php',
     'TagServiceInterface' => $baseDir . '/src/Service/TagServiceInterface.php',
+    'TaxonomyFactory' => $baseDir . '/src/TaxonomyFactory.php',
     'UpdateContent' => $baseDir . '/src/Service/Content/UpdateContent.php',
     'UpdateContentInterface' => $baseDir . '/src/Service/Content/UpdateContentInterface.php',
 );

@@ -33,6 +33,8 @@ class TaxonomyFactory
         $container['service.guzzle'] = function($c) {
             $svc = new GuzzleService();
             $svc->setUrl($c['api_url']);
+
+            return $svc;
         };
 
         //ParserAccessToken
