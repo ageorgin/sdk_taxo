@@ -119,6 +119,7 @@ class TaxonomyFactory
             $svc->setDeleteSvc($c['service.content.delete']);
             $svc->setSearchSvc($c['service.content.search']);
             $svc->setUpdateSvc($c['service.content.update']);
+            return $svc;
         };
 
         // MapperTag
