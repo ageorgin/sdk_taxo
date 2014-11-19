@@ -6,6 +6,8 @@
  * Time: 11:44
  */
 
+namespace Ftven\SdkTaxonomy\Service\Content;
+
 class SearchContent extends AbstractContent implements SearchContentInterface
 {
     public function execute(array $tags, $synonyms = false, $children = false, $page = 1, $limit = 100)

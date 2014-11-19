@@ -6,6 +6,7 @@
  * Time: 10:08
  */
 
+namespace Ftven\SdkTaxonomy\Service\Tag;
 
 interface AutocompleteTagInterface
 {

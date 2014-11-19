@@ -6,6 +6,10 @@
  * Time: 11:10
  */
 
+namespace Ftven\SdkTaxonomy\Service\Content;
+
+use Ftven\SdkTaxonomy\Entity\Content;
+
 interface DeleteContentInterface
 {
     public function execute(Content $content);

@@ -6,6 +6,10 @@
  * Time: 17:14
  */
 
+namespace Ftven\SdkTaxonomy\Service\Content;
+
+use Ftven\SdkTaxonomy\Entity\Content;
+
 interface CreateContentInterface
 {
     public function execute(Content $content);

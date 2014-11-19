@@ -6,6 +6,8 @@
  * Time: 17:23
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
 abstract class AbstractApiService
 {
     /**
@@ -19,7 +21,7 @@ abstract class AbstractApiService
     protected $accessTokenSvc = null;
 
     /**
-     * @param \GuzzleServiceInterface $guzzleSvc
+     * @param GuzzleServiceInterface $guzzleSvc
      */
     public function setGuzzleSvc($guzzleSvc)
     {
@@ -27,7 +29,7 @@ abstract class AbstractApiService
     }
 
     /**
-     * @return \GuzzleServiceInterface
+     * @return GuzzleServiceInterface
      */
     public function getGuzzleSvc()
     {
@@ -35,7 +37,7 @@ abstract class AbstractApiService
     }
 
     /**
-     * @param \AccessTokenService $accessTokenSvc
+     * @param AccessTokenService $accessTokenSvc
      */
     public function setAccessTokenSvc($accessTokenSvc)
     {
@@ -43,7 +45,7 @@ abstract class AbstractApiService
     }
 
     /**
-     * @return \AccessTokenService
+     * @return AccessTokenService
      */
     public function getAccessTokenSvc()
     {

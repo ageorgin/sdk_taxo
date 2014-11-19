@@ -6,6 +6,10 @@
  * Time: 09:43
  */
 
+namespace Ftven\SdkTaxonomy\Service\Content;
+
+use Ftven\SdkTaxonomy\Entity\Content;
+
 class UpdateContent extends AbstractContent implements UpdateContentInterface
 {
     public function execute(Content $content)

@@ -6,6 +6,25 @@
  * Time: 14:48
  */
 
+namespace Ftven\SdkTaxonomy;
+
+use Ftven\SdkTaxonomy\Entity\AccessToken;
+use Ftven\SdkTaxonomy\Service\AccessToken\GenerateAccessToken;
+use Ftven\SdkTaxonomy\Service\AccessToken\ParserAccessToken;
+use Ftven\SdkTaxonomy\Service\AccessTokenService;
+use Ftven\SdkTaxonomy\Service\Content\CreateContent;
+use Ftven\SdkTaxonomy\Service\Content\DeleteContent;
+use Ftven\SdkTaxonomy\Service\Content\MapperContent;
+use Ftven\SdkTaxonomy\Service\Content\SearchContent;
+use Ftven\SdkTaxonomy\Service\Content\SerializerContent;
+use Ftven\SdkTaxonomy\Service\Content\UpdateContent;
+use Ftven\SdkTaxonomy\Service\ContentService;
+use Ftven\SdkTaxonomy\Service\GuzzleService;
+use Ftven\SdkTaxonomy\Service\Tag\AutocompleteTag;
+use Ftven\SdkTaxonomy\Service\Tag\CreateTag;
+use Ftven\SdkTaxonomy\Service\Tag\MapperTag;
+use Ftven\SdkTaxonomy\Service\Tag\SerializerTag;
+use Ftven\SdkTaxonomy\Service\TagService;
 use Pimple\Container;
 
 class TaxonomyFactory

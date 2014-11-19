@@ -6,6 +6,8 @@
  * Time: 11:13
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
 interface AccessTokenServiceInterface
 {
     public function checkAccessToken();

@@ -6,6 +6,13 @@
  * Time: 17:07
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
+use Ftven\SdkTaxonomy\Entity\Content;
+use Ftven\SdkTaxonomy\Service\Content\CreateContentInterface;
+use Ftven\SdkTaxonomy\Service\Content\DeleteContentInterface;
+use Ftven\SdkTaxonomy\Service\Content\UpdateContentInterface;
+
 class ContentService implements ContentServiceInterface
 {
     /**
@@ -24,7 +31,7 @@ class ContentService implements ContentServiceInterface
     private $deleteSvc;
 
     /**
-     * @var SearchContentInterface
+     * @var \SearchContentInterface
      */
     private $searchSvc;
 
@@ -54,7 +61,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @param \CreateContentInterface $createSvc
+     * @param CreateContentInterface $createSvc
      */
     public function setCreateSvc($createSvc)
     {
@@ -62,7 +69,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @return \CreateContentInterface
+     * @return CreateContentInterface
      */
     public function getCreateSvc()
     {
@@ -70,7 +77,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @param \UpdateContentInterface $updateSvc
+     * @param UpdateContentInterface $updateSvc
      */
     public function setUpdateSvc($updateSvc)
     {
@@ -78,7 +85,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @return \UpdateContentInterface
+     * @return UpdateContentInterface
      */
     public function getUpdateSvc()
     {
@@ -86,7 +93,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @param \DeleteContentInterface $deleteSvc
+     * @param DeleteContentInterface $deleteSvc
      */
     public function setDeleteSvc($deleteSvc)
     {
@@ -94,7 +101,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @return \DeleteContentInterface
+     * @return DeleteContentInterface
      */
     public function getDeleteSvc()
     {
@@ -102,7 +109,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @param \SearchContentInterface $searchSvc
+     * @param SearchContentInterface $searchSvc
      */
     public function setSearchSvc($searchSvc)
     {
@@ -110,7 +117,7 @@ class ContentService implements ContentServiceInterface
     }
 
     /**
-     * @return \SearchContentInterface
+     * @return SearchContentInterface
      */
     public function getSearchSvc()
     {

@@ -6,6 +6,11 @@
  * Time: 11:22
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
+use Guzzle\Http\Client;
+use Guzzle\Http\ClientInterface;
+
 class GuzzleService implements GuzzleServiceInterface
 {
     /**
@@ -15,10 +20,10 @@ class GuzzleService implements GuzzleServiceInterface
 
     private $url;
 
-    public function __construct($url = null, Guzzle\Http\ClientInterface $client = null)
+    public function __construct($url = null, ClientInterface $client = null)
     {
         if (null === $client) {
-            $client = new Guzzle\Http\Client();
+            $client = new Client();
         }
         $this->client = $client;
 

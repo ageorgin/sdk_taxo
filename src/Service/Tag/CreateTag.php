@@ -6,6 +6,12 @@
  * Time: 15:54
  */
 
+namespace Ftven\SdkTaxonomy\Service\Tag;
+
+use Ftven\SdkTaxonomy\Entity\Tag;
+use Ftven\SdkTaxonomy\Service\AccessTokenService;
+use Ftven\SdkTaxonomy\Service\GuzzleServiceInterface;
+
 class CreateTag implements CreateTagInterface
 {
     const URI = '/tags';
@@ -46,7 +52,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @param \GuzzleServiceInterface $guzzleSvc
+     * @param GuzzleServiceInterface $guzzleSvc
      */
     public function setGuzzleSvc($guzzleSvc)
     {
@@ -54,7 +60,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @return \GuzzleServiceInterface
+     * @return GuzzleServiceInterface
      */
     public function getGuzzleSvc()
     {
@@ -62,7 +68,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @param \SerializerTagInterface $serializerSvc
+     * @param SerializerTagInterface $serializerSvc
      */
     public function setSerializerSvc($serializerSvc)
     {
@@ -70,7 +76,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @return \SerializerTagInterface
+     * @return SerializerTagInterface
      */
     public function getSerializerSvc()
     {
@@ -78,7 +84,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @param \AccessTokenService $accessTokenSvc
+     * @param AccessTokenService $accessTokenSvc
      */
     public function setAccessTokenSvc($accessTokenSvc)
     {
@@ -86,7 +92,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @return \AccessTokenService
+     * @return AccessTokenService
      */
     public function getAccessTokenSvc()
     {
@@ -94,7 +100,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @param \MapperTagInterface $mapperSvc
+     * @param MapperTagInterface $mapperSvc
      */
     public function setMapperSvc($mapperSvc)
     {
@@ -102,7 +108,7 @@ class CreateTag implements CreateTagInterface
     }
 
     /**
-     * @return \MapperTagInterface
+     * @return MapperTagInterface
      */
     public function getMapperSvc()
     {

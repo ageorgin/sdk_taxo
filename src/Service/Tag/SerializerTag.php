@@ -6,6 +6,10 @@
  * Time: 16:01
  */
 
+namespace Ftven\SdkTaxonomy\Service\Tag;
+
+use Ftven\SdkTaxonomy\Entity\Tag;
+
 class SerializerTag implements SerializerTagInterface
 {
     /**

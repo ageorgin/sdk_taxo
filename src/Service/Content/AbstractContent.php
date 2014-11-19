@@ -6,6 +6,10 @@
  * Time: 09:40
  */
 
+namespace Ftven\SdkTaxonomy\Service\Content;
+
+use Ftven\SdkTaxonomy\Service\AbstractApiService;
+
 abstract class AbstractContent extends AbstractApiService
 {
     const URI = '/contents';
@@ -21,7 +25,7 @@ abstract class AbstractContent extends AbstractApiService
     private $mapperSvc;
 
     /**
-     * @param \SerializerContentInterface $serialiserSvc
+     * @param SerializerContentInterface $serialiserSvc
      */
     public function setSerialiserSvc($serialiserSvc)
     {
@@ -29,7 +33,7 @@ abstract class AbstractContent extends AbstractApiService
     }
 
     /**
-     * @return \SerializerContentInterface
+     * @return SerializerContentInterface
      */
     public function getSerialiserSvc()
     {
@@ -37,7 +41,7 @@ abstract class AbstractContent extends AbstractApiService
     }
 
     /**
-     * @param \MapperContentInterface $mapperSvc
+     * @param MapperContentInterface $mapperSvc
      */
     public function setMapperSvc($mapperSvc)
     {
@@ -45,7 +49,7 @@ abstract class AbstractContent extends AbstractApiService
     }
 
     /**
-     * @return \MapperContentInterface
+     * @return MapperContentInterface
      */
     public function getMapperSvc()
     {

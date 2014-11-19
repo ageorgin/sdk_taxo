@@ -6,6 +6,8 @@
  * Time: 11:49
  */
 
+namespace Ftven\SdkTaxonomy\Entity;
+
 class AccessToken
 {
     private $id;

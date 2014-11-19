@@ -6,6 +6,10 @@
  * Time: 17:11
  */
 
+namespace Ftven\SdkTaxonomy\Service\Content;
+
+use Ftven\SdkTaxonomy\Entity\Content;
+
 interface SerializerContentInterface
 {
     public function serialize(Content $content);

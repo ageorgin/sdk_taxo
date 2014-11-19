@@ -6,6 +6,10 @@
  * Time: 11:08
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
+use Ftven\SdkTaxonomy\Entity\Tag;
+
 interface TagServiceInterface
 {
     /**

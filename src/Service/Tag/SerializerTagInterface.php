@@ -6,6 +6,10 @@
  * Time: 16:00
  */
 
+namespace Ftven\SdkTaxonomy\Service\Tag;
+
+use Ftven\SdkTaxonomy\Entity\Tag;
+
 interface SerializerTagInterface
 {
     public function getCreateSerialization(Tag $tag);

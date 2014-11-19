@@ -1,5 +1,7 @@
 <?php
 
+namespace Ftven\SdkTaxonomy\Entity;
+
 /**
  * Class Tag
  */
@@ -216,12 +218,5 @@ class Tag
     $this->preferredTag = $preferredTag;
 
     return $this;
-  }
-
-  public function tagToArray(){
-    return array(
-      "label" => $this->label,
-      "author" => $this->author,
-      );
   }
 }

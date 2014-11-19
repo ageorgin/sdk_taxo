@@ -6,6 +6,11 @@
  * Time: 10:12
  */
 
+namespace Ftven\SdkTaxonomy\Service\Tag;
+
+use Ftven\SdkTaxonomy\Service\AccessTokenServiceInterface;
+use Ftven\SdkTaxonomy\Service\GuzzleServiceInterface;
+
 class AutocompleteTag implements AutocompleteTagInterface
 {
     const URI = '/tags/autocomplete/';
@@ -37,7 +42,7 @@ class AutocompleteTag implements AutocompleteTagInterface
     }
 
     /**
-     * @param \AccessTokenServiceInterface $accessTokenSvc
+     * @param AccessTokenServiceInterface $accessTokenSvc
      */
     public function setAccessTokenSvc($accessTokenSvc)
     {
@@ -45,7 +50,7 @@ class AutocompleteTag implements AutocompleteTagInterface
     }
 
     /**
-     * @return \AccessTokenServiceInterface
+     * @return AccessTokenServiceInterface
      */
     public function getAccessTokenSvc()
     {
@@ -53,7 +58,7 @@ class AutocompleteTag implements AutocompleteTagInterface
     }
 
     /**
-     * @param \GuzzleServiceInterface $guzzleSvc
+     * @param GuzzleServiceInterface $guzzleSvc
      */
     public function setGuzzleSvc($guzzleSvc)
     {
@@ -61,7 +66,7 @@ class AutocompleteTag implements AutocompleteTagInterface
     }
 
     /**
-     * @return \GuzzleServiceInterface
+     * @return GuzzleServiceInterface
      */
     public function getGuzzleSvc()
     {
@@ -69,7 +74,7 @@ class AutocompleteTag implements AutocompleteTagInterface
     }
 
     /**
-     * @param \MapperTagInterface $mapperSvc
+     * @param MapperTagInterface $mapperSvc
      */
     public function setMapperSvc($mapperSvc)
     {
@@ -77,7 +82,7 @@ class AutocompleteTag implements AutocompleteTagInterface
     }
 
     /**
-     * @return \MapperTagInterface
+     * @return MapperTagInterface
      */
     public function getMapperSvc()
     {

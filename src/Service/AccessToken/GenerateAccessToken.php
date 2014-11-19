@@ -6,6 +6,11 @@
  * Time: 12:04
  */
 
+namespace Ftven\SdkTaxonomy\Service\AccessToken;
+
+use Ftven\SdkTaxonomy\Entity\AccessToken;
+use Ftven\SdkTaxonomy\Service\GuzzleServiceInterface;
+
 class GenerateAccessToken implements GenerateAccessTokenInterface
 {
     const URI = '/access_token';

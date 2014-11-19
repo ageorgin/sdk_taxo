@@ -6,6 +6,8 @@
  * Time: 11:21
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
 interface GuzzleServiceInterface
 {
     /**

@@ -6,6 +6,8 @@
  * Time: 17:33
  */
 
+namespace Ftven\SdkTaxonomy\Service\AccessToken;
+
 interface ParserAccessTokenInterface
 {
     public function parseXFtvenId($xFtvenId);

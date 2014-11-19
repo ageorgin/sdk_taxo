@@ -6,6 +6,12 @@
  * Time: 10:00
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
+use Ftven\SdkTaxonomy\Entity\Tag;
+use Ftven\SdkTaxonomy\Service\Tag\AutocompleteTagInterface;
+use Ftven\SdkTaxonomy\Service\Tag\CreateTagInterface;
+
 class TagService implements TagServiceInterface
 {
     /**
@@ -38,7 +44,7 @@ class TagService implements TagServiceInterface
     }
 
     /**
-     * @param \AutocompleteTagInterface $autocompleteSvc
+     * @param AutocompleteTagInterface $autocompleteSvc
      */
     public function setAutocompleteSvc($autocompleteSvc)
     {
@@ -46,7 +52,7 @@ class TagService implements TagServiceInterface
     }
 
     /**
-     * @return \AutocompleteTagInterface
+     * @return AutocompleteTagInterface
      */
     public function getAutocompleteSvc()
     {
@@ -54,7 +60,7 @@ class TagService implements TagServiceInterface
     }
 
     /**
-     * @param \CreateTagInterface $createSvc
+     * @param CreateTagInterface $createSvc
      */
     public function setCreateSvc($createSvc)
     {
@@ -62,7 +68,7 @@ class TagService implements TagServiceInterface
     }
 
     /**
-     * @return \CreateTagInterface
+     * @return CreateTagInterface
      */
     public function getCreateSvc()
     {

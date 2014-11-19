@@ -6,6 +6,11 @@
  * Time: 11:48
  */
 
+namespace Ftven\SdkTaxonomy\Service;
+
+use Ftven\SdkTaxonomy\Entity\AccessToken;
+use Ftven\SdkTaxonomy\Service\AccessToken\GenerateAccessTokenInterface;
+
 class AccessTokenService implements AccessTokenServiceInterface
 {
     /**
@@ -40,7 +45,7 @@ class AccessTokenService implements AccessTokenServiceInterface
     }
 
     /**
-     * @param \GenerateAccessTokenInterface $generateService
+     * @param GenerateAccessTokenInterface $generateService
      */
     public function setGenerateService($generateService)
     {
@@ -48,7 +53,7 @@ class AccessTokenService implements AccessTokenServiceInterface
     }
 
     /**
-     * @return \GenerateAccessTokenInterface
+     * @return GenerateAccessTokenInterface
      */
     public function getGenerateService()
     {
@@ -56,7 +61,7 @@ class AccessTokenService implements AccessTokenServiceInterface
     }
 
     /**
-     * @param \AccessToken $accessToken
+     * @param AccessToken $accessToken
      */
     public function setAccessToken($accessToken)
     {
@@ -64,7 +69,7 @@ class AccessTokenService implements AccessTokenServiceInterface
     }
 
     /**
-     * @return \AccessToken
+     * @return AccessToken
      */
     public function getAccessToken()
     {

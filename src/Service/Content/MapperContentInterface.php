@@ -6,6 +6,10 @@
  * Time: 17:29
  */
 
+namespace Ftven\SdkTaxonomy\Service\Content;
+
+use Ftven\SdkTaxonomy\Entity\Content;
+
 interface MapperContentInterface
 {
     public function populateContent(Content $content, $data);

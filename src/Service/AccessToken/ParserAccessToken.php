@@ -6,12 +6,14 @@
  * Time: 17:34
  */
 
+namespace Ftven\SdkTaxonomy\Service\AccessToken;
+
 class ParserAccessToken implements ParserAccessTokenInterface
 {
     /**
      * @param $xFtvenId
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public function parseXFtvenId($xFtvenId)
     {

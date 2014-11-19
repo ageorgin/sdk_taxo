@@ -1,5 +1,7 @@
 <?php
 
+namespace Ftven\SdkTaxonomy\Entity;
+
 /**
  * Class Content
  */

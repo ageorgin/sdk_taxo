@@ -6,6 +6,10 @@
  * Time: 11:06
  */
 
+namespace Ftven\SdkTaxonomy\Service\Tag;
+
+use Ftven\SdkTaxonomy\Entity\Tag;
+
 class MapperTag implements MapperTagInterface
 {
     public function getTags($data)
