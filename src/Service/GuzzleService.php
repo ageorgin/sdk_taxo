@@ -77,6 +77,21 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
+     * @param $uri
+     * @param array $data
+     * @param array $headers
+     * @return mixed
+     */
+    public function put($uri, array $data = [], array $headers = [])
+    {
+        $request = $this->client->put($this->getUrl() . $uri, $headers, $data);
+        $result = $request->send();
+
+        return $result;
+    }
+
+
+    /**
      * @param mixed $url
      */
     public function setUrl($url)

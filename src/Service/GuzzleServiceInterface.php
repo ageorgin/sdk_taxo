@@ -38,4 +38,12 @@ interface GuzzleServiceInterface
      * @throws RequestException When an error is encountered
      */
     public function delete($url = null);
+
+    /**
+     * @param $uri
+     * @param array $data
+     * @param array $headers
+     * @return mixed
+     */
+    public function put($uri, array $data = [], array $headers = []);
 } 

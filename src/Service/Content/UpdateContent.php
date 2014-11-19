@@ -2,16 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: ageorgin
- * Date: 18/11/14
- * Time: 17:15
+ * Date: 19/11/14
+ * Time: 09:43
  */
 
-class CreateContent extends AbstractContent implements CreateContentInterface
+class UpdateContent extends AbstractContent implements UpdateContentInterface
 {
     public function execute(Content $content)
     {
-        $response = $this->getGuzzleSvc()->post(
-            self::URI,
+        $response = $this->getGuzzleSvc()->put(
+            self::URI . '/' . $content->getId(),
             $this->getSerialiserSvc()->serialize($content),
             array_merge(
                 ['Content-Type' => 'application/json'],
@@ -19,7 +19,7 @@ class CreateContent extends AbstractContent implements CreateContentInterface
             )
         );
 
-        $response = $response->json();
-        $this->getMapperSvc()->populateContent($content, $response);
+        $this->getMapperSvc()->populateContent($content, $response->json());
     }
+
 } 
