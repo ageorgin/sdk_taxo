@@ -18,6 +18,11 @@ class ContentService implements ContentServiceInterface
      */
     private $updateSvc;
 
+    /**
+     * @var DeleteContentInterface
+     */
+    private $deleteSvc;
+
     public function getContentByTags($tags, $synonyms = false, $children = false, $page = 1, $limit = 100)
     {
         // TODO: Implement getContentByTags() method.
@@ -35,7 +40,7 @@ class ContentService implements ContentServiceInterface
 
     public function deleteContent(Content $content)
     {
-        // TODO: Implement deleteContent() method.
+        return $this->getDeleteSvc()->execute($content);
     }
 
     public function loadPage(Content $content)
@@ -79,5 +84,24 @@ class ContentService implements ContentServiceInterface
             $this->updateSvc = new UpdateContent();
         }
         return $this->updateSvc;
+    }
+
+    /**
+     * @param \DeleteContentInterface $deleteSvc
+     */
+    public function setDeleteSvc($deleteSvc)
+    {
+        $this->deleteSvc = $deleteSvc;
+    }
+
+    /**
+     * @return \DeleteContentInterface
+     */
+    public function getDeleteSvc()
+    {
+        if (null === $this->deleteSvc) {
+            $this->deleteSvc = new DeleteContent();
+        }
+        return $this->deleteSvc;
     }
 } 

@@ -37,7 +37,7 @@ interface GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function delete($url = null);
+    public function delete($uri = null, array $headers = []);
 
     /**
      * @param $uri

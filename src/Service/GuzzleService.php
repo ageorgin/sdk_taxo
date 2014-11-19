@@ -69,9 +69,10 @@ class GuzzleService implements GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function delete($uri = null)
+    public function delete($uri = null, array $headers = [])
     {
-        $result = $this->client->delete($this->getUrl() . $uri);
+        $request = $this->client->delete($this->getUrl() . $uri, $headers);
+        $result = $request->send();
 
         return $result;
     }
