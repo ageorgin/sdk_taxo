@@ -18,4 +18,16 @@ class SerializerContent implements SerializerContentInterface
         ];
     }
 
+    public function serializeSearch(array $tags, $synonyms = false, $children = false, $page = 1, $limit = 100)
+    {
+        return [
+            'tags' => implode($tags, ','),
+            'synonyms' => $synonyms,
+            'children' => $children,
+            'page' => $page,
+            'limit' => $limit
+        ];
+    }
+
+
 } 

@@ -9,4 +9,6 @@
 interface MapperContentInterface
 {
     public function populateContent(Content $content, $data);
+
+    public function getContents($data);
 } 

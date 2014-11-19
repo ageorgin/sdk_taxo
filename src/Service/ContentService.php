@@ -23,9 +23,14 @@ class ContentService implements ContentServiceInterface
      */
     private $deleteSvc;
 
+    /**
+     * @var SearchContentInterface
+     */
+    private $searchSvc;
+
     public function getContentByTags($tags, $synonyms = false, $children = false, $page = 1, $limit = 100)
     {
-        // TODO: Implement getContentByTags() method.
+        return $this->getSearchSvc()->execute($tags, $synonyms, $children, $page, $limit);
     }
 
     public function createContent(Content $content)
@@ -103,5 +108,24 @@ class ContentService implements ContentServiceInterface
             $this->deleteSvc = new DeleteContent();
         }
         return $this->deleteSvc;
+    }
+
+    /**
+     * @param \SearchContentInterface $searchSvc
+     */
+    public function setSearchSvc($searchSvc)
+    {
+        $this->searchSvc = $searchSvc;
+    }
+
+    /**
+     * @return \SearchContentInterface
+     */
+    public function getSearchSvc()
+    {
+        if (null === $this->searchSvc) {
+            $this->searchSvc = new SearchContent();
+        }
+        return $this->searchSvc;
     }
 } 

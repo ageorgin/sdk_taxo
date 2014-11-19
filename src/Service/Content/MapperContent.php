@@ -19,4 +19,19 @@ class MapperContent implements MapperContentInterface
 
         // todo champs date et active
     }
+
+    public function getContents($data)
+    {
+        $contents = [];
+        foreach ($data as $d) {
+            $tmp = new Content();
+            $this->populateContent($tmp, $d);
+            $contents[] = $tmp;
+            unset($tmp);
+        }
+
+        return $contents;
+    }
+
+
 }
