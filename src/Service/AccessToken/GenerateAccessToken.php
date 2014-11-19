@@ -47,9 +47,6 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
      */
     public function getGuzzleService()
     {
-        if (null == $this->guzzleService) {
-            $this->guzzleService = new GuzzleService();
-        }
         return $this->guzzleService;
     }
 
@@ -66,9 +63,6 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
      */
     public function getParserService()
     {
-        if (null == $this->parserService) {
-            $this->parserService = new ParserAccessToken();
-        }
         return $this->parserService;
     }
 } 

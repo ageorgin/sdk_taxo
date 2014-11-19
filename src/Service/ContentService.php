@@ -66,9 +66,6 @@ class ContentService implements ContentServiceInterface
      */
     public function getCreateSvc()
     {
-        if (null === $this->createSvc) {
-            $this->createSvc = new CreateContent();
-        }
         return $this->createSvc;
     }
 
@@ -85,9 +82,6 @@ class ContentService implements ContentServiceInterface
      */
     public function getUpdateSvc()
     {
-        if (null === $this->updateSvc) {
-            $this->updateSvc = new UpdateContent();
-        }
         return $this->updateSvc;
     }
 
@@ -104,9 +98,6 @@ class ContentService implements ContentServiceInterface
      */
     public function getDeleteSvc()
     {
-        if (null === $this->deleteSvc) {
-            $this->deleteSvc = new DeleteContent();
-        }
         return $this->deleteSvc;
     }
 
@@ -123,9 +114,6 @@ class ContentService implements ContentServiceInterface
      */
     public function getSearchSvc()
     {
-        if (null === $this->searchSvc) {
-            $this->searchSvc = new SearchContent();
-        }
         return $this->searchSvc;
     }
 } 

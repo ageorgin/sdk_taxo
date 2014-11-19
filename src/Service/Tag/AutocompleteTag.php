@@ -49,10 +49,6 @@ class AutocompleteTag implements AutocompleteTagInterface
      */
     public function getAccessTokenSvc()
     {
-        if (null === $this->accessTokenSvc) {
-            $this->accessTokenSvc = new AccessTokenService();
-        }
-
         return $this->accessTokenSvc;
     }
 
@@ -69,10 +65,6 @@ class AutocompleteTag implements AutocompleteTagInterface
      */
     public function getGuzzleSvc()
     {
-        if (null === $this->guzzleSvc) {
-            $this->guzzleSvc = new GuzzleService();
-        }
-
         return $this->guzzleSvc;
     }
 
@@ -89,9 +81,6 @@ class AutocompleteTag implements AutocompleteTagInterface
      */
     public function getMapperSvc()
     {
-        if (null === $this->mapperSvc) {
-            $this->mapperSvc = new MapperTag();
-        }
         return $this->mapperSvc;
     }
 } 

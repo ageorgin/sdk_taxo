@@ -50,9 +50,6 @@ class TagService implements TagServiceInterface
      */
     public function getAutocompleteSvc()
     {
-        if (null === $this->autocompleteSvc) {
-            $this->autocompleteSvc = new AutocompleteTag();
-        }
         return $this->autocompleteSvc;
     }
 
@@ -69,9 +66,6 @@ class TagService implements TagServiceInterface
      */
     public function getCreateSvc()
     {
-        if (null === $this->createSvc) {
-            $this->createSvc = new CreateTag();
-        }
         return $this->createSvc;
     }
 } 

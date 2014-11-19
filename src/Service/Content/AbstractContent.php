@@ -33,9 +33,6 @@ abstract class AbstractContent extends AbstractApiService
      */
     public function getSerialiserSvc()
     {
-        if (null === $this->serialiserSvc) {
-            $this->serialiserSvc = new SerializerContent();
-        }
         return $this->serialiserSvc;
     }
 
@@ -52,9 +49,6 @@ abstract class AbstractContent extends AbstractApiService
      */
     public function getMapperSvc()
     {
-        if (null === $this->mapperSvc) {
-            $this->mapperSvc = new MapperContent();
-        }
         return $this->mapperSvc;
     }
 } 

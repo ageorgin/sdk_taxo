@@ -105,9 +105,6 @@ class GuzzleService implements GuzzleServiceInterface
      */
     public function getUrl()
     {
-        if (null === $this->url) {
-            $this->url = 'http://api-taxonomie.ftv-preprod.fr';
-        }
         return $this->url;
     }
 } 

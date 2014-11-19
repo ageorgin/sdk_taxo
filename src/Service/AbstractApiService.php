@@ -31,9 +31,6 @@ abstract class AbstractApiService
      */
     public function getGuzzleSvc()
     {
-        if (null === $this->guzzleSvc) {
-            $this->guzzleSvc = new GuzzleService();
-        }
         return $this->guzzleSvc;
     }
 
@@ -50,10 +47,6 @@ abstract class AbstractApiService
      */
     public function getAccessTokenSvc()
     {
-        if (null === $this->accessTokenSvc) {
-            $this->accessTokenSvc = new AccessTokenService();
-        }
-
         return $this->accessTokenSvc;
     }
 } 

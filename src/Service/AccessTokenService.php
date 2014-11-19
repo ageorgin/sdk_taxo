@@ -52,9 +52,6 @@ class AccessTokenService implements AccessTokenServiceInterface
      */
     public function getGenerateService()
     {
-        if (null == $this->generateService) {
-            $this->generateService = new GenerateAccessToken();
-        }
         return $this->generateService;
     }
 
@@ -71,11 +68,6 @@ class AccessTokenService implements AccessTokenServiceInterface
      */
     public function getAccessToken()
     {
-        if (null === $this->accessToken) {
-            $this->accessToken = new AccessToken();
-            //todo ligne suivante à supprimer
-            $this->accessToken->setId('pluzz');
-        }
         return $this->accessToken;
     }
 } 
