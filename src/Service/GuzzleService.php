@@ -20,6 +20,11 @@ class GuzzleService implements GuzzleServiceInterface
 
     private $url;
 
+    /**
+     * @var ExceptionServiceInterface
+     */
+    private $exceptionService = null;
+
     public function __construct($url = null, ClientInterface $client = null)
     {
         if (null === $client) {
@@ -42,7 +47,13 @@ class GuzzleService implements GuzzleServiceInterface
     public function post($uri = null, array $data = null, array $headers = [])
     {
         $request = $this->client->post($this->getUrl() . $uri, $headers, $data);
-        $result = $request->send();
+
+        try {
+            $result = $request->send();
+        } catch (\Exception $e) {
+            $apiException = $this->getExceptionService()->getApiException($e);
+            throw $apiException;
+        }
 
         return $result;
     }
@@ -61,7 +72,13 @@ class GuzzleService implements GuzzleServiceInterface
         foreach ($params as $key => $value) {
             $request->getQuery()->add($key, $value);
         }
-        $result = $request->send();
+
+        try {
+            $result = $request->send();
+        } catch (\Exception $e) {
+            $apiException = $this->getExceptionService()->getApiException($e);
+            throw $apiException;
+        }
 
         return $result->json();
     }
@@ -77,7 +94,13 @@ class GuzzleService implements GuzzleServiceInterface
     public function delete($uri = null, array $headers = [])
     {
         $request = $this->client->delete($this->getUrl() . $uri, $headers);
-        $result = $request->send();
+
+        try {
+            $result = $request->send();
+        } catch (\Exception $e) {
+            $apiException = $this->getExceptionService()->getApiException($e);
+            throw $apiException;
+        }
 
         return $result;
     }
@@ -91,7 +114,13 @@ class GuzzleService implements GuzzleServiceInterface
     public function put($uri, array $data = [], array $headers = [])
     {
         $request = $this->client->put($this->getUrl() . $uri, $headers, $data);
-        $result = $request->send();
+
+        try {
+            $result = $request->send();
+        } catch (\Exception $e) {
+            $apiException = $this->getExceptionService()->getApiException($e);
+            throw $apiException;
+        }
 
         return $result;
     }
@@ -111,5 +140,21 @@ class GuzzleService implements GuzzleServiceInterface
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * @param \Ftven\SdkTaxonomy\Service\ExceptionServiceInterface $exceptionService
+     */
+    public function setExceptionService($exceptionService)
+    {
+        $this->exceptionService = $exceptionService;
+    }
+
+    /**
+     * @return \Ftven\SdkTaxonomy\Service\ExceptionServiceInterface
+     */
+    public function getExceptionService()
+    {
+        return $this->exceptionService;
     }
 } 

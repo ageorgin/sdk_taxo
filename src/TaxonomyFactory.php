@@ -19,6 +19,7 @@ use Ftven\SdkTaxonomy\Service\Content\SearchContent;
 use Ftven\SdkTaxonomy\Service\Content\SerializerContent;
 use Ftven\SdkTaxonomy\Service\Content\UpdateContent;
 use Ftven\SdkTaxonomy\Service\ContentService;
+use Ftven\SdkTaxonomy\Service\ExceptionService;
 use Ftven\SdkTaxonomy\Service\GuzzleService;
 use Ftven\SdkTaxonomy\Service\Tag\AutocompleteTag;
 use Ftven\SdkTaxonomy\Service\Tag\CreateTag;
@@ -48,10 +49,16 @@ class TaxonomyFactory
         $container['api_url'] = $apiUrl;
         $container['api_product_id'] = $apiProductId;
 
+        // ExceptionService
+        $container['service.exception'] = function($c) {
+            return new ExceptionService();
+        };
+
         // GuzzleService
         $container['service.guzzle'] = function($c) {
             $svc = new GuzzleService();
             $svc->setUrl($c['api_url']);
+            $svc->setExceptionService($c['service.exception']);
 
             return $svc;
         };
