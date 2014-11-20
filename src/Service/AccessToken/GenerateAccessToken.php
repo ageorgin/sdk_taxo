@@ -9,6 +9,7 @@
 namespace Ftven\SdkTaxonomy\Service\AccessToken;
 
 use Ftven\SdkTaxonomy\Entity\AccessToken;
+use Ftven\SdkTaxonomy\Exception\ApiException;
 use Ftven\SdkTaxonomy\Service\GuzzleServiceInterface;
 
 class GenerateAccessToken implements GenerateAccessTokenInterface
@@ -28,6 +29,10 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
     public function execute(AccessToken $accessToken)
     {
         $response = $this->getGuzzleService()->post(self::URI, null, ['X-FTVEN-ID' => "id: " . $accessToken->getId()]);
+
+        if(!$response->hasHeader('X-FTVEN-ID')) {
+            throw new ApiException('No header X-FTVEN-ID received');
+        }
 
         $headerAT = $response->getHeader('X-FTVEN-ID')->toArray();
         $headerAT = $this->getParserService()->parseXFtvenId($headerAT[0]);

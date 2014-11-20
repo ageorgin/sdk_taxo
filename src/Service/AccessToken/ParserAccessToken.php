@@ -8,6 +8,8 @@
 
 namespace Ftven\SdkTaxonomy\Service\AccessToken;
 
+use Ftven\SdkTaxonomy\Exception\SdkException;
+
 class ParserAccessToken implements ParserAccessTokenInterface
 {
     /**
@@ -24,7 +26,7 @@ class ParserAccessToken implements ParserAccessTokenInterface
                 'token' => $matches[3]
             ];
         } else {
-            throw new \Exception('unable to parse X-FTVEN-ID header');
+            throw new SdkException('unable to parse X-FTVEN-ID header with value [' . $xFtvenId . ']');
         }
     }
 
