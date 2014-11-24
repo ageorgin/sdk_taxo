@@ -22,7 +22,7 @@ class ExceptionService implements ExceptionServiceInterface
         $code = $e->getCode();
         $message = $e->getMessage();
 
-        $response = $e->getResponse();
+        $response = method_exists($e, 'getResponse') ? $e->getResponse() : null;
         if (!empty($response)) {
             $body = $response->getBody();
             if (!empty($body)) {

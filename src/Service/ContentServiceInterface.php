@@ -19,6 +19,4 @@ interface ContentServiceInterface
     public function updateContent(Content $content);
 
     public function deleteContent(Content $content);
-
-    public function loadPage(Content $content);
 } 

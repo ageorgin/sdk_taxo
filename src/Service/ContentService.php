@@ -55,11 +55,6 @@ class ContentService implements ContentServiceInterface
         return $this->getDeleteSvc()->execute($content);
     }
 
-    public function loadPage(Content $content)
-    {
-        // TODO: Implement loadPage() method.
-    }
-
     /**
      * @param CreateContentInterface $createSvc
      */
