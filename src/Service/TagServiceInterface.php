@@ -24,4 +24,10 @@ interface TagServiceInterface
      * @return mixed
      */
     public function createTag(Tag $tag);
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getTag($id);
 } 

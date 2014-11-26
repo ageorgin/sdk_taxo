@@ -24,6 +24,7 @@ use Ftven\SdkTaxonomy\Service\GuzzleService;
 use Ftven\SdkTaxonomy\Service\Tag\AutocompleteTag;
 use Ftven\SdkTaxonomy\Service\Tag\CreateTag;
 use Ftven\SdkTaxonomy\Service\Tag\MapperTag;
+use Ftven\SdkTaxonomy\Service\Tag\ReadTag;
 use Ftven\SdkTaxonomy\Service\Tag\SerializerTag;
 use Ftven\SdkTaxonomy\Service\TagService;
 use Pimple\Container;
@@ -177,11 +178,19 @@ class TaxonomyFactory
             return $svc;
         };
 
+        $container['service.tag.read'] = function($c) {
+            $svc = new ReadTag();
+            $svc->setAccessTokenSvc($c['service.access_token']);
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.tag.mapper']);
+        };
+
         // TagService
         $container['service.tag'] = function($c) {
             $svc = new TagService();
             $svc->setAutocompleteSvc($c['service.tag.autocomplete']);
             $svc->setCreateSvc($c['service.tag.create']);
+            $svc->setReadSvc($c['service.tag.read']);
             return $svc;
         };
 

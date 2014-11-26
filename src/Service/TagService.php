@@ -11,6 +11,7 @@ namespace Ftven\SdkTaxonomy\Service;
 use Ftven\SdkTaxonomy\Entity\Tag;
 use Ftven\SdkTaxonomy\Service\Tag\AutocompleteTagInterface;
 use Ftven\SdkTaxonomy\Service\Tag\CreateTagInterface;
+use Ftven\SdkTaxonomy\Service\Tag\ReadTagInterface;
 
 class TagService implements TagServiceInterface
 {
@@ -23,6 +24,11 @@ class TagService implements TagServiceInterface
      * @var CreateTagInterface
      */
     private $createSvc = null;
+
+    /**
+     * @var ReadTagInterface
+     */
+    private $readSvc = null;
 
     /**
      * @param null $string
@@ -41,6 +47,15 @@ class TagService implements TagServiceInterface
     public function createTag(Tag $tag)
     {
         return $this->getCreateSvc()->execute($tag);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getTag($id)
+    {
+        return $this->getReadSvc()->execute($id);
     }
 
     /**
@@ -73,5 +88,21 @@ class TagService implements TagServiceInterface
     public function getCreateSvc()
     {
         return $this->createSvc;
+    }
+
+    /**
+     * @param \Ftven\SdkTaxonomy\Service\Tag\ReadTagInterface $readSvc
+     */
+    public function setReadSvc($readSvc)
+    {
+        $this->readSvc = $readSvc;
+    }
+
+    /**
+     * @return \Ftven\SdkTaxonomy\Service\Tag\ReadTagInterface
+     */
+    public function getReadSvc()
+    {
+        return $this->readSvc;
     }
 } 
