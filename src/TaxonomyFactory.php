@@ -183,6 +183,7 @@ class TaxonomyFactory
             $svc->setAccessTokenSvc($c['service.access_token']);
             $svc->setGuzzleSvc($c['service.guzzle']);
             $svc->setMapperSvc($c['service.tag.mapper']);
+            return $svc;
         };
 
         // TagService
