@@ -47,4 +47,17 @@ class TagServiceTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc->setCreateSvc($mockCreateTag);
         $this->assertEquals('executeCreateTag', $svc->createTag(new \Ftven\SdkTaxonomy\Entity\Tag()));
     }
+
+    public function testGetTag()
+    {
+        $mockReadTag = $this->getMock('\Ftven\SdkTaxonomy\Service\Tag\ReadTag', array('execute'));
+        $mockReadTag
+            ->expects($this->once())
+            ->method('execute')
+            ->willReturn('executeReadTag');
+
+        $svc = new \Ftven\SdkTaxonomy\Service\TagService();
+        $svc->setReadSvc($mockReadTag);
+        $this->assertEquals('executeReadTag', $svc->getTag(666));
+    }
 } 
