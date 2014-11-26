@@ -11,24 +11,9 @@ namespace Ftven\SdkTaxonomy\Service\Tag;
 use Ftven\SdkTaxonomy\Service\AccessTokenServiceInterface;
 use Ftven\SdkTaxonomy\Service\GuzzleServiceInterface;
 
-class AutocompleteTag implements AutocompleteTagInterface
+class AutocompleteTag extends AbstractTag implements AutocompleteTagInterface
 {
     const URI = '/tags/autocomplete/';
-
-    /**
-     * @var GuzzleServiceInterface
-     */
-    private $guzzleSvc = null;
-
-    /**
-     * @var AccessTokenServiceInterface
-     */
-    private $accessTokenSvc = null;
-
-    /**
-     * @var MapperTagInterface
-     */
-    private $mapperSvc = null;
 
     public function execute($filter, $sort = null)
     {
@@ -39,53 +24,5 @@ class AutocompleteTag implements AutocompleteTagInterface
 
         $response = $this->getGuzzleSvc()->get(self::URI . $filter, $this->getAccessTokenSvc()->getHeaders(), $params);
         return $this->getMapperSvc()->getTags($response);
-    }
-
-    /**
-     * @param AccessTokenServiceInterface $accessTokenSvc
-     */
-    public function setAccessTokenSvc($accessTokenSvc)
-    {
-        $this->accessTokenSvc = $accessTokenSvc;
-    }
-
-    /**
-     * @return AccessTokenServiceInterface
-     */
-    public function getAccessTokenSvc()
-    {
-        return $this->accessTokenSvc;
-    }
-
-    /**
-     * @param GuzzleServiceInterface $guzzleSvc
-     */
-    public function setGuzzleSvc($guzzleSvc)
-    {
-        $this->guzzleSvc = $guzzleSvc;
-    }
-
-    /**
-     * @return GuzzleServiceInterface
-     */
-    public function getGuzzleSvc()
-    {
-        return $this->guzzleSvc;
-    }
-
-    /**
-     * @param MapperTagInterface $mapperSvc
-     */
-    public function setMapperSvc($mapperSvc)
-    {
-        $this->mapperSvc = $mapperSvc;
-    }
-
-    /**
-     * @return MapperTagInterface
-     */
-    public function getMapperSvc()
-    {
-        return $this->mapperSvc;
     }
 } 
