@@ -8,9 +8,6 @@
 
 namespace Ftven\SdkTaxonomy\Service\Tag;
 
-use Ftven\SdkTaxonomy\Service\AccessTokenServiceInterface;
-use Ftven\SdkTaxonomy\Service\GuzzleServiceInterface;
-
 class AutocompleteTag extends AbstractTag implements AutocompleteTagInterface
 {
     const URI = '/tags/autocomplete/';

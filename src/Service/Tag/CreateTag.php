@@ -9,8 +9,6 @@
 namespace Ftven\SdkTaxonomy\Service\Tag;
 
 use Ftven\SdkTaxonomy\Entity\Tag;
-use Ftven\SdkTaxonomy\Service\AccessTokenService;
-use Ftven\SdkTaxonomy\Service\GuzzleServiceInterface;
 
 class CreateTag extends AbstractTag implements CreateTagInterface
 {
