@@ -3,7 +3,7 @@
     "description": "Client API FTVEN projet taxonomie",
     "keywords": ["api", "rest"],
     "type": "library",
-    "licence": "proprietary",
+    "license": "proprietary",
     "authors": [{
         "name": "France Télévisions Edition Numérique"
     }],
