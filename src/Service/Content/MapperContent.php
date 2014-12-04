@@ -20,8 +20,8 @@ class MapperContent implements MapperContentInterface
         $content->setProduct($data['product']);
         $content->setTags($data['tags']);
         $content->setAuthor($data['author']);
-
-        // todo champs date et active
+        $content->setActive($data['active']);
+        $content->setDate(new \DateTime($data['date']));
     }
 
     public function getContents($data)

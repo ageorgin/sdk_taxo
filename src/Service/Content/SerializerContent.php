@@ -19,6 +19,8 @@ class SerializerContent implements SerializerContentInterface
             'type' => $content->getType(),
             'tags' => $content->getTags(),
             'author' => $content->getAuthor(),
+            'date' => null === $content->getDate() ? null : $content->getDate()->format('Y-m-d\TH:i:sO'),
+            'active' => $content->getActive()
         ];
     }
 

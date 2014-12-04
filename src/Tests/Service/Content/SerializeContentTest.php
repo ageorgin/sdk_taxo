@@ -24,6 +24,8 @@ class SerializeContentTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $content->setType('mon-type');
         $content->setTags('mon-tag');
         $content->setAuthor('mon-author');
+        $content->setActive(true);
+        $content->setDate(new \DateTime("2014-08-21T05:00:00+0100"));
 
         return [
           [
@@ -33,6 +35,8 @@ class SerializeContentTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
                   'type' => null,
                   'tags' => [],
                   'author' => null,
+                  'active' => false,
+                  'date' => null
               ]
           ],
           [
@@ -42,6 +46,8 @@ class SerializeContentTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
                   'type' => 'mon-type',
                   'tags' => 'mon-tag',
                   'author' => 'mon-author',
+                  'active' => true,
+                  'date' => '2014-08-21T05:00:00+0100'
               ]
           ]
         ];
