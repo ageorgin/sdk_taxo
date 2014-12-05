@@ -225,4 +225,4 @@ class GuzzleServiceTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc = new \Ftven\SdkTaxonomy\Service\GuzzleService('url', $mockClient);
         $this->assertEquals('OK SEND PUT', $svc->put('/uri', ['data' => null], ['headers' => null]));
     }
-} 
+}

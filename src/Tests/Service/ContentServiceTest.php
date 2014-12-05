@@ -66,4 +66,4 @@ class ContentServiceTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc->setDeleteSvc($mock);
         $this->assertEquals('responseDeleteContent', $svc->deleteContent($content));
     }
-} 
+}

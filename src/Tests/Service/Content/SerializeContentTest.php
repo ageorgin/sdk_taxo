@@ -109,4 +109,4 @@ class SerializeContentTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
             ]
         ];
     }
-} 
+}

@@ -20,5 +20,4 @@ class SearchContent extends AbstractContent implements SearchContentInterface
 
         return $this->getMapperSvc()->getContents($response);
     }
-
-} 
+}

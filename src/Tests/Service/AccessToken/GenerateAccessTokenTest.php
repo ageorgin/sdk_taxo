@@ -57,4 +57,4 @@ class GenerateAccessTokenTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $this->assertEquals($now, $accessToken->getExpire());
         $this->assertEquals('mon-token', $accessToken->getToken());
     }
-} 
+}

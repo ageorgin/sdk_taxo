@@ -13,4 +13,4 @@ use Ftven\SdkTaxonomy\Entity\Tag;
 interface CreateTagInterface
 {
     public function execute(Tag $tag);
-} 
+}

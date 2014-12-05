@@ -19,5 +19,4 @@ class DeleteContent extends AbstractContent implements DeleteContentInterface
             $this->getAccessTokenSvc()->getHeaders()
         );
     }
-
-} 
+}

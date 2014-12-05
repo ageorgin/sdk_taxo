@@ -11,4 +11,4 @@ namespace Ftven\SdkTaxonomy\Service\Tag;
 interface AutocompleteTagInterface
 {
     public function execute($filter, $sort = null);
-} 
+}

@@ -36,6 +36,4 @@ class MapperContent implements MapperContentInterface
 
         return $contents;
     }
-
-
 }

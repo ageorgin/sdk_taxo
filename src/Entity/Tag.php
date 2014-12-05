@@ -7,28 +7,29 @@ namespace Ftven\SdkTaxonomy\Entity;
  */
 class Tag
 {
+    private $id = null;
+    private $status = null;
+    private $type = null;
+    private $label = null;
+    private $comment = null;
+    private $author = null;
+    private $product = null;
+    private $parents = array();
+    private $preferredTag = null;
 
-  private $id = null;
-  private $status = null;
-  private $type = null;
-  private $label = null;
-  private $comment = null;
-  private $author = null;
-  private $product = null;
-  private $parents = array();
-  private $preferredTag = null;
-
-  public function __construct($id = null) {
-    $this->id = $id;
-  }
+    public function __construct($id = null)
+    {
+        $this->id = $id;
+    }
 
   /**
    * Gets the value of id.
    *
    * @return mixed
    */
-  public function getId() {
-    return $this->id;
+  public function getId()
+  {
+      return $this->id;
   }
 
   /**
@@ -38,10 +39,11 @@ class Tag
    *
    * @return self
    */
-  public function setId($id) {
-    $this->id = $id;
+  public function setId($id)
+  {
+      $this->id = $id;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -49,8 +51,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getStatus() {
-    return $this->status;
+  public function getStatus()
+  {
+      return $this->status;
   }
 
   /**
@@ -60,10 +63,11 @@ class Tag
    *
    * @return self
    */
-  public function setStatus($status) {
-    $this->status = $status;
+  public function setStatus($status)
+  {
+      $this->status = $status;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -71,8 +75,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getType() {
-    return $this->type;
+  public function getType()
+  {
+      return $this->type;
   }
 
   /**
@@ -82,10 +87,11 @@ class Tag
    *
    * @return self
    */
-  public function setType($type) {
-    $this->type = $type;
+  public function setType($type)
+  {
+      $this->type = $type;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -93,8 +99,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getLabel() {
-    return $this->label;
+  public function getLabel()
+  {
+      return $this->label;
   }
 
   /**
@@ -104,10 +111,11 @@ class Tag
    *
    * @return self
    */
-  public function setLabel($label) {
-    $this->label = $label;
+  public function setLabel($label)
+  {
+      $this->label = $label;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -115,8 +123,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getComment() {
-    return $this->comment;
+  public function getComment()
+  {
+      return $this->comment;
   }
 
   /**
@@ -126,10 +135,11 @@ class Tag
    *
    * @return self
    */
-  public function setComment($comment) {
-    $this->comment = $comment;
+  public function setComment($comment)
+  {
+      $this->comment = $comment;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -137,8 +147,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getAuthor() {
-    return $this->author;
+  public function getAuthor()
+  {
+      return $this->author;
   }
 
   /**
@@ -148,10 +159,11 @@ class Tag
    *
    * @return self
    */
-  public function setAuthor($author) {
-    $this->author = $author;
+  public function setAuthor($author)
+  {
+      $this->author = $author;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -159,8 +171,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getProduct() {
-    return $this->product;
+  public function getProduct()
+  {
+      return $this->product;
   }
 
   /**
@@ -170,10 +183,11 @@ class Tag
    *
    * @return self
    */
-  public function setProduct($product) {
-    $this->product = $product;
+  public function setProduct($product)
+  {
+      $this->product = $product;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -181,8 +195,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getParents() {
-    return $this->parents;
+  public function getParents()
+  {
+      return $this->parents;
   }
 
   /**
@@ -192,10 +207,11 @@ class Tag
    *
    * @return self
    */
-  public function setParents($parents) {
-    $this->parents = $parents;
+  public function setParents($parents)
+  {
+      $this->parents = $parents;
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -203,8 +219,9 @@ class Tag
    *
    * @return mixed
    */
-  public function getPreferredTag() {
-    return $this->preferredTag;
+  public function getPreferredTag()
+  {
+      return $this->preferredTag;
   }
 
   /**
@@ -214,9 +231,10 @@ class Tag
    *
    * @return self
    */
-  public function setPreferredTag($preferredTag) {
-    $this->preferredTag = $preferredTag;
+  public function setPreferredTag($preferredTag)
+  {
+      $this->preferredTag = $preferredTag;
 
-    return $this;
+      return $this;
   }
 }

@@ -22,4 +22,4 @@ class AutocompleteTag extends AbstractTag implements AutocompleteTagInterface
         $response = $this->getGuzzleSvc()->get(self::URI . $filter, $this->getAccessTokenSvc()->getHeaders(), $params);
         return $this->getMapperSvc()->getTags($response);
     }
-} 
+}

@@ -30,7 +30,7 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
     {
         $response = $this->getGuzzleService()->post(self::URI, null, ['X-FTVEN-ID' => "id: " . $accessToken->getId()]);
 
-        if(!$response->hasHeader('X-FTVEN-ID')) {
+        if (!$response->hasHeader('X-FTVEN-ID')) {
             throw new ApiException('No header X-FTVEN-ID received');
         }
 
@@ -75,4 +75,4 @@ class GenerateAccessToken implements GenerateAccessTokenInterface
     {
         return $this->parserService;
     }
-} 
+}

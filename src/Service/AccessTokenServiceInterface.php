@@ -13,4 +13,4 @@ interface AccessTokenServiceInterface
     public function checkAccessToken();
 
     public function getHeaders();
-} 
+}

@@ -26,4 +26,4 @@ class CreateContent extends AbstractContent implements CreateContentInterface
         $response = $response->json();
         $this->getMapperSvc()->populateContent($content, $response);
     }
-} 
+}

@@ -34,6 +34,4 @@ class SerializerContent implements SerializerContentInterface
             'limit' => $limit
         ];
     }
-
-
-} 
+}

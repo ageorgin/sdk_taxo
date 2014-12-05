@@ -25,5 +25,4 @@ class UpdateContent extends AbstractContent implements UpdateContentInterface
 
         $this->getMapperSvc()->populateContent($content, $response->json());
     }
-
-} 
+}

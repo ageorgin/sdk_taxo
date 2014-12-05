@@ -59,4 +59,4 @@ class ExceptionServiceTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
             [666, 'message exception', 123456789, 'body message'],
         ];
     }
-} 
+}

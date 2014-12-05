@@ -8,7 +8,6 @@
 
 namespace Ftven\SdkTaxonomy\Service\Tag;
 
-
 use Ftven\SdkTaxonomy\Service\AbstractApiService;
 
 class AbstractTag extends AbstractApiService
@@ -56,6 +55,4 @@ class AbstractTag extends AbstractApiService
     {
         return $this->serializerSvc;
     }
-
-
-} 
+}

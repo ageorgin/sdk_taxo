@@ -8,7 +8,6 @@
 
 namespace Ftven\SdkTaxonomy\Service;
 
-
 use Ftven\SdkTaxonomy\Exception\ApiException;
 
 class ExceptionService implements ExceptionServiceInterface
@@ -29,11 +28,9 @@ class ExceptionService implements ExceptionServiceInterface
                 $body = json_decode($body);
                 $code = isset($body->error->code) ? $body->error->code : $e->getCode();
                 $message = isset($body->error->message) ? $body->error->message : $e->getMessage();
-
             }
         }
 
         return new ApiException($message, $code);
     }
-
-} 
+}

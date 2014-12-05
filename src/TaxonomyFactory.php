@@ -51,12 +51,12 @@ class TaxonomyFactory
         $container['api_product_id'] = $apiProductId;
 
         // ExceptionService
-        $container['service.exception'] = function($c) {
+        $container['service.exception'] = function ($c) {
             return new ExceptionService();
         };
 
         // GuzzleService
-        $container['service.guzzle'] = function($c) {
+        $container['service.guzzle'] = function ($c) {
             $svc = new GuzzleService();
             $svc->setUrl($c['api_url']);
             $svc->setExceptionService($c['service.exception']);
@@ -65,12 +65,12 @@ class TaxonomyFactory
         };
 
         //ParserAccessToken
-        $container['service.access_token.parser'] = function($c) {
+        $container['service.access_token.parser'] = function ($c) {
             return new ParserAccessToken();
         };
 
         // GenerateAccessToken
-        $container['service.access_token.generate'] = function($c) {
+        $container['service.access_token.generate'] = function ($c) {
             $svc = new GenerateAccessToken();
             $svc->setGuzzleService($c['service.guzzle']);
             $svc->setParserService($c['service.access_token.parser']);
@@ -78,7 +78,7 @@ class TaxonomyFactory
         };
 
         // AccessTokenService
-        $container['service.access_token'] = function($c) {
+        $container['service.access_token'] = function ($c) {
             $entity = new AccessToken();
             $entity->setId($c['api_product_id']);
 
@@ -90,17 +90,17 @@ class TaxonomyFactory
         };
 
         // MapperContent
-        $container['service.content.mapper'] = function($c) {
+        $container['service.content.mapper'] = function ($c) {
             return new MapperContent();
         };
 
         // SerializerContent
-        $container['service.content.serializer'] = function($c) {
+        $container['service.content.serializer'] = function ($c) {
           return new SerializerContent();
         };
 
         // CreateContent
-        $container['service.content.create'] = function($c) {
+        $container['service.content.create'] = function ($c) {
             $svc = new CreateContent();
             $svc->setAccessTokenSvc($c['service.access_token']);
             $svc->setGuzzleSvc($c['service.guzzle']);
@@ -110,7 +110,7 @@ class TaxonomyFactory
         };
 
         // DeleteContent
-        $container['service.content.delete'] = function($c) {
+        $container['service.content.delete'] = function ($c) {
             $svc = new DeleteContent();
             $svc->setAccessTokenSvc($c['service.access_token']);
             $svc->setGuzzleSvc($c['service.guzzle']);
@@ -120,7 +120,7 @@ class TaxonomyFactory
         };
 
         // SearchContent
-        $container['service.content.search'] = function($c) {
+        $container['service.content.search'] = function ($c) {
             $svc = new SearchContent();
             $svc->setAccessTokenSvc($c['service.access_token']);
             $svc->setGuzzleSvc($c['service.guzzle']);
@@ -130,7 +130,7 @@ class TaxonomyFactory
         };
 
         // UpdateContent
-        $container['service.content.update'] = function($c) {
+        $container['service.content.update'] = function ($c) {
             $svc = new UpdateContent();
             $svc->setAccessTokenSvc($c['service.access_token']);
             $svc->setGuzzleSvc($c['service.guzzle']);
@@ -140,7 +140,7 @@ class TaxonomyFactory
         };
 
         // ContentService
-        $container['service.content'] = function($c) {
+        $container['service.content'] = function ($c) {
             $svc = new ContentService();
             $svc->setCreateSvc($c['service.content.create']);
             $svc->setDeleteSvc($c['service.content.delete']);
@@ -150,17 +150,17 @@ class TaxonomyFactory
         };
 
         // MapperTag
-        $container['service.tag.mapper'] = function($c) {
+        $container['service.tag.mapper'] = function ($c) {
             return new MapperTag();
         };
 
         // SerializerTag
-        $container['service.tag.serializer'] = function($c) {
+        $container['service.tag.serializer'] = function ($c) {
             return new SerializerTag();
         };
 
         // AutocompleteTag
-        $container['service.tag.autocomplete'] = function($c) {
+        $container['service.tag.autocomplete'] = function ($c) {
             $svc = new AutocompleteTag();
             $svc->setMapperSvc($c['service.tag.mapper']);
             $svc->setGuzzleSvc($c['service.guzzle']);
@@ -169,7 +169,7 @@ class TaxonomyFactory
         };
 
         // CreateTag
-        $container['service.tag.create'] = function($c) {
+        $container['service.tag.create'] = function ($c) {
             $svc = new CreateTag();
             $svc->setSerializerSvc($c['service.tag.serializer']);
             $svc->setMapperSvc($c['service.tag.mapper']);
@@ -178,7 +178,7 @@ class TaxonomyFactory
             return $svc;
         };
 
-        $container['service.tag.read'] = function($c) {
+        $container['service.tag.read'] = function ($c) {
             $svc = new ReadTag();
             $svc->setAccessTokenSvc($c['service.access_token']);
             $svc->setGuzzleSvc($c['service.guzzle']);
@@ -187,7 +187,7 @@ class TaxonomyFactory
         };
 
         // TagService
-        $container['service.tag'] = function($c) {
+        $container['service.tag'] = function ($c) {
             $svc = new TagService();
             $svc->setAutocompleteSvc($c['service.tag.autocomplete']);
             $svc->setCreateSvc($c['service.tag.create']);
@@ -197,4 +197,4 @@ class TaxonomyFactory
 
         return $container;
     }
-} 
+}

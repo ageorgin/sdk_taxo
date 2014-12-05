@@ -65,6 +65,4 @@ class AccessToken
     {
         return $this->token;
     }
-
-
-} 
+}

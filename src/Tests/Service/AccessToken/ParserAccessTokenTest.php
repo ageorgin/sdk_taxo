@@ -32,4 +32,4 @@ class ParserAccessTokenTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
             $ret
         );
     }
-} 
+}

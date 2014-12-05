@@ -118,4 +118,4 @@ class ContentService implements ContentServiceInterface
     {
         return $this->searchSvc;
     }
-} 
+}

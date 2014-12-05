@@ -13,4 +13,4 @@ use Ftven\SdkTaxonomy\Entity\AccessToken;
 interface GenerateAccessTokenInterface
 {
     public function execute(AccessToken $accessToken);
-} 
+}

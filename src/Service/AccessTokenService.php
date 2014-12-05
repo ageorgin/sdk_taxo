@@ -28,7 +28,7 @@ class AccessTokenService implements AccessTokenServiceInterface
         $now = new \DateTime();
 
         // le token n'existe pas ou a expiré
-        if ( null === $this->getAccessToken()->getToken() ||  $this->getAccessToken()->getExpire()->getTimestamp() < $now->getTimestamp()) {
+        if (null === $this->getAccessToken()->getToken() ||  $this->getAccessToken()->getExpire()->getTimestamp() < $now->getTimestamp()) {
             $this->generateAccessToken();
         }
     }
@@ -75,4 +75,4 @@ class AccessTokenService implements AccessTokenServiceInterface
     {
         return $this->accessToken;
     }
-} 
+}

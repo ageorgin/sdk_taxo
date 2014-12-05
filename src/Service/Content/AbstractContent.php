@@ -55,4 +55,4 @@ abstract class AbstractContent extends AbstractApiService
     {
         return $this->mapperSvc;
     }
-} 
+}

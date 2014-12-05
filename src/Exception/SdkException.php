@@ -8,8 +8,6 @@
 
 namespace Ftven\SdkTaxonomy\Exception;
 
-
 class SdkException extends \Exception
 {
-
-} 
+}

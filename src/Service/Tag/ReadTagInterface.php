@@ -8,8 +8,7 @@
 
 namespace Ftven\SdkTaxonomy\Service\Tag;
 
-
 interface ReadTagInterface
 {
     public function execute($id);
-} 
+}

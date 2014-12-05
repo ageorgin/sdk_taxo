@@ -53,4 +53,4 @@ class AutocompleteTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
             ['bricolo', 'type']
         ];
     }
-} 
+}

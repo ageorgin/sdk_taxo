@@ -60,4 +60,4 @@ class TagServiceTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc->setReadSvc($mockReadTag);
         $this->assertEquals('executeReadTag', $svc->getTag(666));
     }
-} 
+}

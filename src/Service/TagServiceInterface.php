@@ -30,4 +30,4 @@ interface TagServiceInterface
      * @return mixed
      */
     public function getTag($id);
-} 
+}

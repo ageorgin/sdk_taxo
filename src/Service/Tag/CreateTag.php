@@ -26,4 +26,4 @@ class CreateTag extends AbstractTag implements CreateTagInterface
         $response = $response->json();
         $this->getMapperSvc()->populateTag($tag, $response);
     }
-} 
+}

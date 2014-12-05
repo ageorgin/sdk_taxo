@@ -52,4 +52,4 @@ class CreateTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc->setSerializerSvc($mockSerialiserSvc);
         $svc->execute($tag);
     }
-} 
+}

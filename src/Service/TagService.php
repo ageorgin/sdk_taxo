@@ -105,4 +105,4 @@ class TagService implements TagServiceInterface
     {
         return $this->readSvc;
     }
-} 
+}

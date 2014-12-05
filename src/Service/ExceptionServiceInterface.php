@@ -8,7 +8,6 @@
 
 namespace Ftven\SdkTaxonomy\Service;
 
-
 use Ftven\SdkTaxonomy\Exception\ApiException;
 
 interface ExceptionServiceInterface
@@ -18,4 +17,4 @@ interface ExceptionServiceInterface
      * @return ApiException
      */
     public function getApiException(\Exception $e);
-} 
+}

@@ -48,4 +48,4 @@ interface GuzzleServiceInterface
      * @return mixed
      */
     public function put($uri, array $data = [], array $headers = []);
-} 
+}

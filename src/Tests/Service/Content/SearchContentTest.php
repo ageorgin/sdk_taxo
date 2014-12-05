@@ -62,4 +62,4 @@ class SearchContentTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc->setAccessTokenSvc($mockAccessTokenSvc);
         $this->assertEquals('OK getContents', $svc->execute(['tag1', 'tag2']));
     }
-} 
+}

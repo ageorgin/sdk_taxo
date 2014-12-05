@@ -100,4 +100,4 @@ class AccessTokenServiceTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $this->getResultFromMethod($svc, 'generateAccessToken', []);
         $this->assertEquals($accessTokenOutput, $svc->getAccessToken());
     }
-} 
+}

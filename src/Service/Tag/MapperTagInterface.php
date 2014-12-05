@@ -15,4 +15,4 @@ interface MapperTagInterface
     public function getTags($data);
 
     public function populateTag(Tag $tag, $data);
-} 
+}

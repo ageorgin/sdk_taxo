@@ -29,5 +29,4 @@ class ParserAccessToken implements ParserAccessTokenInterface
             throw new SdkException('unable to parse X-FTVEN-ID header with value [' . $xFtvenId . ']');
         }
     }
-
-} 
+}

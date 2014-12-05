@@ -92,4 +92,4 @@ class MapperTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $this->assertEquals(2, count($result));
         $this->assertEquals($expected, $result);
     }
-} 
+}

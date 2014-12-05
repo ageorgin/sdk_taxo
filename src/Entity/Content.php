@@ -27,8 +27,9 @@ class Content
     private $active = false;
 
 
-    public function __construct($id = null) {
-    $this->id = $id;
+    public function __construct($id = null)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -36,8 +37,9 @@ class Content
     *
     * @return mixed
     */
-    public function getId() {
-    return $this->id;
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -47,10 +49,11 @@ class Content
     *
     * @return self
     */
-    public function setId($id) {
-    $this->id = $id;
+    public function setId($id)
+    {
+        $this->id = $id;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -58,8 +61,9 @@ class Content
     *
     * @return mixed
     */
-    public function getUri() {
-    return $this->uri;
+    public function getUri()
+    {
+        return $this->uri;
     }
 
     /**
@@ -69,10 +73,11 @@ class Content
     *
     * @return self
     */
-    public function setUri($uri) {
-    $this->uri = $uri;
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -80,8 +85,9 @@ class Content
     *
     * @return mixed
     */
-    public function getType() {
-    return $this->type;
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
@@ -91,10 +97,11 @@ class Content
     *
     * @return self
     */
-    public function setType($type) {
-    $this->type = $type;
+    public function setType($type)
+    {
+        $this->type = $type;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -102,8 +109,9 @@ class Content
     *
     * @return mixed
     */
-    public function getTags() {
-    return $this->tags;
+    public function getTags()
+    {
+        return $this->tags;
     }
 
     /**
@@ -113,10 +121,11 @@ class Content
     *
     * @return self
     */
-    public function setTags($tags) {
-    $this->tags = $tags;
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -124,8 +133,9 @@ class Content
     *
     * @return mixed
     */
-    public function getAuthor() {
-    return $this->author;
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     /**
@@ -135,10 +145,11 @@ class Content
     *
     * @return self
     */
-    public function setAuthor($author) {
-    $this->author = $author;
+    public function setAuthor($author)
+    {
+        $this->author = $author;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -146,8 +157,9 @@ class Content
     *
     * @return mixed
     */
-    public function getProduct() {
-    return $this->product;
+    public function getProduct()
+    {
+        return $this->product;
     }
 
     /**
@@ -157,10 +169,11 @@ class Content
     *
     * @return self
     */
-    public function setProduct($product) {
-    $this->product = $product;
+    public function setProduct($product)
+    {
+        $this->product = $product;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -168,8 +181,9 @@ class Content
     *
     * @return mixed
     */
-    public function getFromSynonym() {
-    return $this->fromSynonym;
+    public function getFromSynonym()
+    {
+        return $this->fromSynonym;
     }
 
     /**
@@ -179,10 +193,11 @@ class Content
     *
     * @return self
     */
-    public function setFromSynonym($fromSynonym) {
-    $this->fromSynonym = $fromSynonym;
+    public function setFromSynonym($fromSynonym)
+    {
+        $this->fromSynonym = $fromSynonym;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -190,8 +205,9 @@ class Content
     *
     * @return mixed
     */
-    public function getFromChild() {
-    return $this->fromChild;
+    public function getFromChild()
+    {
+        return $this->fromChild;
     }
 
     /**
@@ -201,10 +217,11 @@ class Content
     *
     * @return self
     */
-    public function setFromChild($fromChild) {
-    $this->fromChild = $fromChild;
+    public function setFromChild($fromChild)
+    {
+        $this->fromChild = $fromChild;
 
-    return $this;
+        return $this;
     }
 
     /**

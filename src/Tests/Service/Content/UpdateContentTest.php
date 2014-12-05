@@ -51,4 +51,4 @@ class UpdateContentTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc->setAccessTokenSvc($mockAccessTokenSvc);
         $svc->execute($content);
     }
-} 
+}

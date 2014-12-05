@@ -40,4 +40,4 @@ class SerializerTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
             ]
         ];
     }
-} 
+}

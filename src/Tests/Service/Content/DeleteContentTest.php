@@ -28,4 +28,4 @@ class DeleteContentTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $svc->setGuzzleSvc($mockGuzzleService);
         $svc->execute(new \Ftven\SdkTaxonomy\Entity\Content(666));
     }
-} 
+}

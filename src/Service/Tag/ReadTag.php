@@ -8,7 +8,6 @@
 
 namespace Ftven\SdkTaxonomy\Service\Tag;
 
-
 use Ftven\SdkTaxonomy\Entity\Tag;
 
 class ReadTag extends AbstractTag implements ReadTagInterface
@@ -24,5 +23,4 @@ class ReadTag extends AbstractTag implements ReadTagInterface
         $this->getMapperSvc()->populateTag($ret, $response);
         return $ret;
     }
-
-} 
+}

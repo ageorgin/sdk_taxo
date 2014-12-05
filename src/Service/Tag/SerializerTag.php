@@ -23,4 +23,4 @@ class SerializerTag implements SerializerTagInterface
             'author' => $tag->getAuthor()
         ];
     }
-} 
+}

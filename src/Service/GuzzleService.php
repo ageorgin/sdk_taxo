@@ -157,4 +157,4 @@ class GuzzleService implements GuzzleServiceInterface
     {
         return $this->exceptionService;
     }
-} 
+}

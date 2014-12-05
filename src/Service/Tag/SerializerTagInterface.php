@@ -13,4 +13,4 @@ use Ftven\SdkTaxonomy\Entity\Tag;
 interface SerializerTagInterface
 {
     public function getCreateSerialization(Tag $tag);
-} 
+}

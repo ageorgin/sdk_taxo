@@ -13,4 +13,4 @@ use Ftven\SdkTaxonomy\Entity\Content;
 interface CreateContentInterface
 {
     public function execute(Content $content);
-} 
+}

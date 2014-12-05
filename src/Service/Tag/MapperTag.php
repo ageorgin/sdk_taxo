@@ -15,7 +15,7 @@ class MapperTag implements MapperTagInterface
     public function getTags($data)
     {
         $tags = [];
-        foreach($data as $d) {
+        foreach ($data as $d) {
             $tmp = new Tag();
             $this->populateTag($tmp, $d);
             $tags[] = $tmp;
@@ -37,6 +37,4 @@ class MapperTag implements MapperTagInterface
         $tag->setStatus($data['status']);
         $tag->setType($data['type']);
     }
-
-
-} 
+}
