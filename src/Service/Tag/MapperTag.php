@@ -32,9 +32,14 @@ class MapperTag implements MapperTagInterface
         $tag->setComment($data['comment']);
         $tag->setLabel($data['label']);
         $tag->setParents($data['parent_tags']);
-        $tag->setPreferredTag($data['preferred_tag']);
         $tag->setProduct($data['product']);
         $tag->setStatus($data['status']);
         $tag->setType($data['type']);
+
+        if (null !== $data['preferred_tag']) {
+            $preferredTag = new Tag();
+            $this->populateTag($preferredTag, $data['preferred_tag']);
+            $tag->setPreferredTag($preferredTag);
+        }
     }
 }

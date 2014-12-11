@@ -18,7 +18,17 @@ class MapperTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
             'comment' => 'mon-comment',
             'label' => 'mon-label',
             'parent_tags' => 'mes-parent-tags',
-            'preferred_tag' => 'mon-preferred-tag',
+            'preferred_tag' => [
+                'id' => 'mon-id2',
+                'author' => 'mon-author2',
+                'comment' => 'mon-comment2',
+                'label' => 'mon-label2',
+                'parent_tags' => 'mes-parent-tags2',
+                'preferred_tag' => null,
+                'product' => 'mon-product2',
+                'status' => 'mon-status2',
+                'type' => 'mon-type2'
+            ],
             'product' => 'mon-product',
             'status' => 'mon-status',
             'type' => 'mon-type'
@@ -29,10 +39,20 @@ class MapperTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $this->assertEquals('mon-comment', $tag->getComment());
         $this->assertEquals('mon-label', $tag->getLabel());
         $this->assertEquals('mes-parent-tags', $tag->getParents());
-        $this->assertEquals('mon-preferred-tag', $tag->getPreferredTag());
         $this->assertEquals('mon-product', $tag->getProduct());
         $this->assertEquals('mon-status', $tag->getStatus());
         $this->assertEquals('mon-type', $tag->getType());
+
+        $this->assertInstanceOf('\Ftven\SdkTaxonomy\Entity\Tag', $tag->getPreferredTag());
+        $this->assertEquals('mon-id2', $tag->getPreferredTag()->getId());
+        $this->assertEquals('mon-author2', $tag->getPreferredTag()->getAuthor());
+        $this->assertEquals('mon-comment2', $tag->getPreferredTag()->getComment());
+        $this->assertEquals('mon-label2', $tag->getPreferredTag()->getLabel());
+        $this->assertEquals('mes-parent-tags2', $tag->getPreferredTag()->getParents());
+        $this->assertEquals('mon-product2', $tag->getPreferredTag()->getProduct());
+        $this->assertEquals('mon-status2', $tag->getPreferredTag()->getStatus());
+        $this->assertEquals('mon-type2', $tag->getPreferredTag()->getType());
+
     }
 
     public function testGetTags()
@@ -46,7 +66,17 @@ class MapperTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
                     'comment' => 'mon-comment',
                     'label' => 'mon-label',
                     'parent_tags' => 'mes-parent-tags',
-                    'preferred_tag' => 'mon-preferred-tag',
+                    'preferred_tag' => [
+                        'id' => 'mon-id2',
+                        'author' => 'mon-author2',
+                        'comment' => 'mon-comment2',
+                        'label' => 'mon-label2',
+                        'parent_tags' => 'mes-parent-tags2',
+                        'preferred_tag' => null,
+                        'product' => 'mon-product2',
+                        'status' => 'mon-status2',
+                        'type' => 'mon-type2'
+                    ],
                     'product' => 'mon-product',
                     'status' => 'mon-status',
                     'type' => 'mon-type'
@@ -57,7 +87,7 @@ class MapperTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
                     'comment' => 'mon-comment2',
                     'label' => 'mon-label2',
                     'parent_tags' => 'mes-parent-tags2',
-                    'preferred_tag' => 'mon-preferred-tag2',
+                    'preferred_tag' => null,
                     'product' => 'mon-product2',
                     'status' => 'mon-status2',
                     'type' => 'mon-type2'
@@ -71,7 +101,6 @@ class MapperTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $tag1->setComment('mon-comment');
         $tag1->setLabel('mon-label');
         $tag1->setParents('mes-parent-tags');
-        $tag1->setPreferredTag('mon-preferred-tag');
         $tag1->setProduct('mon-product');
         $tag1->setStatus('mon-status');
         $tag1->setType('mon-type');
@@ -82,10 +111,13 @@ class MapperTagTest extends \Ftven\SdkTaxonomy\Tests\PHPUnitAbstract
         $tag2->setComment('mon-comment2');
         $tag2->setLabel('mon-label2');
         $tag2->setParents('mes-parent-tags2');
-        $tag2->setPreferredTag('mon-preferred-tag2');
+        $tag2->setPreferredTag(null);
         $tag2->setProduct('mon-product2');
         $tag2->setStatus('mon-status2');
         $tag2->setType('mon-type2');
+
+        $tag1->setPreferredTag($tag2);
+
 
         $expected = [$tag1, $tag2];
 
